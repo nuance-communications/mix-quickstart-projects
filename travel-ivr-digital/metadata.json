@@ -1,0 +1,46 @@
+{
+    "channels": [
+        {
+            "color": "#871699",
+            "isEnabled": true,
+            "modes": [
+                "Audio Script",
+                "DTMF",
+                "TTS"
+            ],
+            "name": "IVR channel"
+        },
+        {
+            "color": "#F59E47",
+            "isEnabled": true,
+            "modes": [
+                "Interactivity",
+                "Rich Text"
+            ],
+            "name": "Digital VA text"
+        }
+    ],
+    "collaborators": [
+        "stefanie.fail@nuance.com",
+        "ellie.fried@nuance.com",
+        "ieva.dubinskaite@nuance.com",
+        "michael.gourlay@nuance.com",
+        "krishna.govindarajan@nuance.com",
+        "suzanne.bolduc@nuance.com"
+    ],
+    "createdTime": "2022-02-15T00:16:34.302935Z",
+    "id": {
+        "ontology": "c1e7b969-a5a9-4db2-8196-9461513fc2c3",
+        "project": 27938
+    },
+    "lastModified": "2022-02-15T00:19:01Z",
+    "name": "Nuance Mix QuickStart",
+    "stats": {
+        "entities": 33,
+        "intents": 5
+    },
+    "versions": {
+        "baseDatapack": "9.4.3",
+        "qnlp": "QNLP_2_15"
+    }
+}

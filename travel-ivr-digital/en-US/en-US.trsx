@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<project xmlns:nuance="https://developer.nuance.com/mix/nlu/trsx" xml:lang="eng-USA" nuance:version="2.5" nuance:enginePackVersion="hosted">
+    <sources>
+        <source name="nuance_custom_data" displayName="nuance_custom_data" version="1.0" type="CUSTOM" useForOOV="true"/>
+    </sources>
+    <ontology base="http://developer.nuance.com/resources/ontology-1.0.xml">
+        <intents>
+            <intent name="iAllDone"/>
+            <intent name="iFAQLostLuggage"/>
+            <intent name="iBookFlight">
+                <links>
+                    <link conceptref="eDepartureDate"/>
+                    <link conceptref="eArrivalCity"/>
+                    <link conceptref="eDepartureCity"/>
+                    <link conceptref="eCity"/>
+                </links>
+            </intent>
+            <intent name="iFlightStatus"/>
+        </intents>
+        <concepts>
+            <concept name="eDepartureCity">
+                <relations>
+                    <relation type="isA" conceptref="eCity"/>
+                </relations>
+            </concept>
+            <concept name="eArrivalCity">
+                <relations>
+                    <relation type="isA" conceptref="eCity"/>
+                </relations>
+            </concept>
+            <concept name="eDepartureDate">
+                <relations>
+                    <relation type="isA" conceptref="DATE"/>
+                </relations>
+            </concept>
+            <concept name="eGlobalCommands"/>
+            <concept name="eConfirmFlightLookup">
+                <relations>
+                    <relation type="isA" conceptref="YES_NO"/>
+                </relations>
+            </concept>
+            <concept name="eConfirmFlight">
+                <relations>
+                    <relation type="isA" conceptref="YES_NO"/>
+                </relations>
+            </concept>
+            <concept name="eBookFlight"/>
+            <concept name="eCity"/>
+        </concepts>
+    </ontology>
+    <dictionaries>
+        <dictionary conceptref="eGlobalCommands">
+            <entry literal="agent" value="escalate"/>
+            <entry literal="book a flight" value="book flight"/>
+            <entry literal="cities" value="cities"/>
+            <entry literal="escalate" value="escalate"/>
+            <entry literal="flight status" value="flight status"/>
+            <entry literal="give me options" value="options"/>
+            <entry literal="human agent" value="escalate"/>
+            <entry literal="list all the cities" value="cities"/>
+            <entry literal="list the cities" value="cities"/>
+            <entry literal="lost luggage" value="lost luggage"/>
+            <entry literal="main menu" value="main menu"/>
+            <entry literal="menu options" value="options"/>
+            <entry literal="operator" value="escalate"/>
+            <entry literal="options" value="options"/>
+            <entry literal="speak to a representative" value="escalate"/>
+            <entry literal="speak to someone" value="escalate"/>
+            <entry literal="what are my options" value="options"/>
+            <entry literal="what are the cities" value="cities"/>
+            <entry literal="what are the options" value="options"/>
+            <entry literal="what things can i say" value="options"/>
+        </dictionary>
+        <dictionary conceptref="eCity">
+            <entry literal="Atlanta" value="Atlanta"/>
+            <entry literal="Cleveland" value="Cleveland"/>
+            <entry literal="JFK" value="New York City"/>
+            <entry literal="LGA" value="New York City"/>
+            <entry literal="New York" value="New York City"/>
+            <entry literal="New York City" value="New York City"/>
+            <entry literal="Phoenix" value="Phoenix"/>
+            <entry literal="San Fran" value="San Francisco"/>
+            <entry literal="San Francisco" value="San Francisco"/>
+        </dictionary>
+    </dictionaries>
+    <samples>
+        <sample intentref="NO_INTENT" count="1" excluded="false" fullyVerified="true">all the<annotation conceptref="eGlobalCommands">cities</annotation>
+        </sample>
+        <sample intentref="NO_INTENT" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="eCity">San Francisco</annotation>
+        </sample>
+        <sample intentref="NO_INTENT" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="eCity">JFK</annotation>
+        </sample>
+        <sample intentref="NO_INTENT" count="1" excluded="false" fullyVerified="false">i would like to</sample>
+        <sample intentref="NO_INTENT" count="1" excluded="false" fullyVerified="false">i'd like to</sample>
+        <sample intentref="iBookFlight" count="2" excluded="false" fullyVerified="false">need to book a flight</sample>
+        <sample intentref="iBookFlight" count="2" excluded="false" fullyVerified="false">book a flight</sample>
+        <sample intentref="iAllDone" count="2" excluded="false" fullyVerified="false">that's all</sample>
+        <sample intentref="NO_INTENT" count="2" excluded="false" fullyVerified="true">actually from<annotation conceptref="eDepartureCity">
+                <annotation conceptref="eCity">Tokyo</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="iBookFlight" count="2" excluded="false" fullyVerified="true">book a flight leaving from<annotation conceptref="eDepartureCity">
+                <annotation conceptref="eCity">atlanta</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="iBookFlight" count="2" excluded="false" fullyVerified="true">buy tickets to<annotation conceptref="eArrivalCity">
+                <annotation conceptref="eCity">san francisco</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="iFAQLostLuggage" count="2" excluded="false" fullyVerified="false">i can't find my luggage</sample>
+        <sample intentref="iAllDone" count="2" excluded="false" fullyVerified="false">i'm done</sample>
+        <sample intentref="iAllDone" count="2" excluded="false" fullyVerified="false">no all done</sample>
+        <sample intentref="iAllDone" count="2" excluded="false" fullyVerified="false">no thanks i'm good</sample>
+        <sample intentref="iAllDone" count="2" excluded="false" fullyVerified="false">nope i'm done</sample>
+        <sample intentref="iAllDone" count="2" excluded="false" fullyVerified="false">nothing else , i'm done</sample>
+        <sample intentref="iAllDone" count="2" excluded="false" fullyVerified="false">nothing else , thanks</sample>
+        <sample intentref="iBookFlight" count="2" excluded="false" fullyVerified="true">book a flight to<annotation conceptref="eArrivalCity">
+                <annotation conceptref="eCity">new york city</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="iBookFlight" count="2" excluded="false" fullyVerified="true">book a flight to<annotation conceptref="eArrivalCity">
+                <annotation conceptref="eCity">san francisco</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="iBookFlight" count="2" excluded="false" fullyVerified="true">schedule a flight from<annotation conceptref="eDepartureCity">
+                <annotation conceptref="eCity">cleveland</annotation>
+            </annotation>to<annotation conceptref="eArrivalCity">
+                <annotation conceptref="eCity">new york</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="iBookFlight" count="2" excluded="false" fullyVerified="true">book a flight to<annotation conceptref="eArrivalCity">
+                <annotation conceptref="eCity">chicago</annotation>
+            </annotation>from<annotation conceptref="eDepartureCity">
+                <annotation conceptref="eCity">la guardia</annotation>
+            </annotation>on<annotation conceptref="eDepartureDate">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">January 24th</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="iFlightStatus" count="2" excluded="false" fullyVerified="false">check the status of my flight</sample>
+        <sample intentref="iFlightStatus" count="2" excluded="false" fullyVerified="false">flight status</sample>
+        <sample intentref="iFlightStatus" count="2" excluded="false" fullyVerified="false">is my flight on time</sample>
+        <sample intentref="iFlightStatus" count="2" excluded="false" fullyVerified="false">is my flight delayed</sample>
+        <sample intentref="iFAQLostLuggage" count="2" excluded="false" fullyVerified="false">where's my suitcase</sample>
+        <sample intentref="iAllDone" count="2" excluded="false" fullyVerified="false">I'm done</sample>
+        <sample intentref="iAllDone" count="2" excluded="false" fullyVerified="false">nope</sample>
+        <sample intentref="iAllDone" count="2" excluded="false" fullyVerified="false">that's it</sample>
+        <sample intentref="iBookFlight" count="10" excluded="false" fullyVerified="true">book a flight from<annotation conceptref="eDepartureCity">
+                <annotation conceptref="eCity">new york city</annotation>
+            </annotation>to<annotation conceptref="eArrivalCity">
+                <annotation conceptref="eCity">cleveland</annotation>
+            </annotation>on<annotation conceptref="eDepartureDate">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">january 2nd</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="NO_INTENT" count="2" excluded="false" fullyVerified="true">
+            <annotation conceptref="eGlobalCommands">representative</annotation>
+        </sample>
+        <sample intentref="NO_INTENT" count="2" excluded="false" fullyVerified="true">
+            <annotation conceptref="eGlobalCommands">customer service representative</annotation>
+        </sample>
+        <sample intentref="NO_INTENT" count="2" excluded="false" fullyVerified="true">
+            <annotation conceptref="eGlobalCommands">options</annotation>
+        </sample>
+        <sample intentref="iBookFlight" count="2" excluded="false" fullyVerified="true">need to schedule a flight from<annotation conceptref="eDepartureCity">
+                <annotation conceptref="eCity">phoenix</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="iBookFlight" count="2" excluded="false" fullyVerified="true">i need to go to<annotation conceptref="eArrivalCity">
+                <annotation conceptref="eCity">cleveland</annotation>
+            </annotation>on<annotation conceptref="eDepartureDate">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">monday</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="iBookFlight" count="2" excluded="false" fullyVerified="true">is there a flight from<annotation conceptref="eDepartureCity">
+                <annotation conceptref="eCity">atlanta</annotation>
+            </annotation>to<annotation conceptref="eArrivalCity">
+                <annotation conceptref="eCity">phoenix</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="NO_INTENT" count="2" excluded="false" fullyVerified="true">actually I want to go to<annotation conceptref="eArrivalCity">
+                <annotation conceptref="eCity">New York</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="iBookFlight" count="2" excluded="false" fullyVerified="true">i want to fly to<annotation conceptref="eArrivalCity">
+                <annotation conceptref="eCity">new york</annotation>
+            </annotation>
+            <annotation conceptref="eDepartureDate">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">tomorrow</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="NO_INTENT" count="2" excluded="false" fullyVerified="true">on<annotation conceptref="eDepartureDate">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">thursday</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="iFAQLostLuggage" count="2" excluded="false" fullyVerified="false">lost luggage</sample>
+        <sample intentref="iFAQLostLuggage" count="2" excluded="false" fullyVerified="false">where's my luggage</sample>
+        <sample intentref="iAllDone" count="2" excluded="false" fullyVerified="false">that's all thank you</sample>
+        <sample intentref="iAllDone" count="2" excluded="false" fullyVerified="false">i'm all set thanks</sample>
+        <sample intentref="iAllDone" count="2" excluded="false" fullyVerified="false">nothing goodbye</sample>
+        <sample intentref="iAllDone" count="2" excluded="false" fullyVerified="false">nothing else thanks i'm good</sample>
+        <sample intentref="iAllDone" count="2" excluded="false" fullyVerified="false">that's all for now</sample>
+        <sample intentref="iAllDone" count="2" excluded="false" fullyVerified="false">don't need any more help</sample>
+        <sample intentref="iAllDone" count="2" excluded="false" fullyVerified="false">goodbye</sample>
+        <sample intentref="NO_INTENT" count="2" excluded="false" fullyVerified="true">
+            <annotation conceptref="eGlobalCommands">what are my options</annotation>
+        </sample>
+        <sample intentref="NO_INTENT" count="2" excluded="false" fullyVerified="true">actually to<annotation conceptref="eArrivalCity">
+                <annotation conceptref="eCity">Seattle</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="NO_INTENT" count="2" excluded="false" fullyVerified="true">actually i'm leaving from<annotation conceptref="eDepartureCity">
+                <annotation conceptref="eCity">atlanta</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="NO_INTENT" count="2" excluded="false" fullyVerified="true">no i'm leaving from<annotation conceptref="eDepartureCity">
+                <annotation conceptref="eCity">atlanta</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="NO_INTENT" count="2" excluded="false" fullyVerified="true">actually i'm leaving on<annotation conceptref="eDepartureDate">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">friday</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="iFlightStatus" count="2" excluded="false" fullyVerified="false">what's the status of my flight</sample>
+        <sample intentref="iFAQLostLuggage" count="2" excluded="false" fullyVerified="false">i lost my luggage</sample>
+        <sample intentref="iFAQLostLuggage" count="4" excluded="false" fullyVerified="false">my luggage didn't arrive</sample>
+        <sample intentref="NO_INTENT" count="20" excluded="false" fullyVerified="true">on<annotation conceptref="eDepartureDate">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">december 21st</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="iBookFlight" count="1" excluded="false" fullyVerified="true">book a flight to<annotation conceptref="eArrivalCity">
+                <annotation conceptref="eCity">New York</annotation>
+            </annotation>from<annotation conceptref="eDepartureCity">
+                <annotation conceptref="eCity">Cleveland</annotation>
+            </annotation>
+            <annotation conceptref="eDepartureDate">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">tomorrow</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="iBookFlight" count="2" excluded="false" fullyVerified="false">booking a flight</sample>
+    </samples>
+</project>
