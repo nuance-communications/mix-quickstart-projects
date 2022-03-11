@@ -530,7 +530,7 @@
                                                             {
                                                                 "assign":
                                                                 {
-                                                                    "constant": "reservation",
+                                                                    "constant": "reservations",
                                                                     "lhsVariable":
                                                                     {
                                                                         "description": "For transfer purposes: Target queue name, set upon transferring out of the application.",
@@ -3044,7 +3044,7 @@
                                                             {
                                                                 "assign":
                                                                 {
-                                                                    "constant": "1.0.2",
+                                                                    "constant": "1.0.3",
                                                                     "lhsVariable":
                                                                     {
                                                                         "description": "Reflects the bot version.",

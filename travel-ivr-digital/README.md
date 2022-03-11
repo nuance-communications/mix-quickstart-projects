@@ -10,6 +10,9 @@
 
 # Versions
 
+## 1.0.3 - Mar 11, 2022
+* Update "reservation" to "reservations" for queue name
+
 ## 1.0.2 - Feb 14, 2022
 * Fix behavior of Question Router to skip when appropriate
 
