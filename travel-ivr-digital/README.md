@@ -3,12 +3,12 @@
 ![travel-demo](https://user-images.githubusercontent.com/26783/155430263-65b06b5a-35c0-44a2-b96a-e568103c7591.gif)
 
 * Type: Multi-Channel
-* Channels: IVR, Digital VA text
+* Channels: IVR channel, Digital VA text
 * Locales: en-US
 * Domain: Travel
 * Integrations: [Demo Client](https://github.com/nuance-communications/mix-demo-client-azstaticwebapps), Partner Cloud
 
-# Versions
+# Changelog
 
 ## 1.0.3 - Mar 11, 2022
 * Update "reservation" to "reservations" for queue name
