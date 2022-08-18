@@ -1,0 +1,60 @@
+{
+    "channels": [
+        {
+            "color": "#7894F2",
+            "isEnabled": true,
+            "modes": [
+                "Interactivity",
+                "Rich Text",
+                "TTS"
+            ],
+            "name": "Web VA"
+        },
+        {
+            "color": "#2EB8B5",
+            "isEnabled": true,
+            "modes": [
+                "Rich Text"
+            ],
+            "name": "SMS"
+        },
+        {
+            "color": "#F8DC4F",
+            "isEnabled": true,
+            "modes": [
+                "Audio Script",
+                "DTMF",
+                "TTS"
+            ],
+            "name": "IVR"
+        },
+        {
+            "color": "#DA2B7F",
+            "isEnabled": true,
+            "modes": [
+                "Interactivity",
+                "Rich Text",
+                "TTS"
+            ],
+            "name": "Mobile VA"
+        }
+    ],
+    "collaborators": [
+        "nirvana.tikku@nuance.com"
+    ],
+    "createdTime": "2022-02-07T18:04:21.270815Z",
+    "id": {
+        "ontology": "c1e124c2-7423-4310-a7d2-ff29b5fb8399",
+        "project": 27485
+    },
+    "lastModified": "2022-08-18T00:31:31.802000Z",
+    "name": "Demo Client Omni Showcase v1.8.0",
+    "stats": {
+        "entities": 49,
+        "intents": 19
+    },
+    "versions": {
+        "baseDatapack": "9.4.10",
+        "qnlp": "QNLP_2_15"
+    }
+}
