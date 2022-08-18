@@ -1,5 +1,7 @@
 # Overview
 
+This project is optimized to work with the [Demo Client](https://github.com/nuance-communications/mix-demo-client-azstaticwebapps).
+
 * Type: Omni-Channel
 * Channels: Web VA, SMS, IVR, Mobile VA
 * Locales: en-US
