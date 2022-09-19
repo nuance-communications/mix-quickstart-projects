@@ -14,8 +14,8 @@ This project is optimized to work with the [Demo Client](https://github.com/nuan
 
 ## Bot StartData
 
-* If using the weather scenarios, a key must be supplied. Obtain one from [AccuWeather](https://developer.accuweather.com/).
 * If interested in tailoring the experience, supply the USER's first and last names (optional).
+* If using the weather scenarios, a key must be supplied. Obtain one from [AccuWeather](https://developer.accuweather.com/).
 
 Snippet:
 
