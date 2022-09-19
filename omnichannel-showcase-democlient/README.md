@@ -1,7 +1,5 @@
 # Overview
 
-![oc-showcase-demo](./demo.gif)
-
 This project is optimized to work with the [Demo Client](https://github.com/nuance-communications/mix-demo-client-azstaticwebapps).
 
 * Type: Omni-Channel
@@ -9,6 +7,8 @@ This project is optimized to work with the [Demo Client](https://github.com/nuan
 * Locales: en-US
 * Domain(s): Finance, Banking, Retail, Travel, Personal Assistant
 * Integrations: [Demo Client](https://github.com/nuance-communications/mix-demo-client-azstaticwebapps)
+
+![oc-showcase-demo](./demo.gif)
 
 # Integration Tips 💡
 
