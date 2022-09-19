@@ -1,5 +1,7 @@
 # Overview
 
+![oc-showcase-demo](./demo.gif)
+
 This project is optimized to work with the [Demo Client](https://github.com/nuance-communications/mix-demo-client-azstaticwebapps).
 
 * Type: Omni-Channel
@@ -7,17 +9,6 @@ This project is optimized to work with the [Demo Client](https://github.com/nuan
 * Locales: en-US
 * Domain(s): Finance, Banking, Retail, Travel, Personal Assistant
 * Integrations: [Demo Client](https://github.com/nuance-communications/mix-demo-client-azstaticwebapps)
-
-### 💡 Tip Importing
-
-When importing into Mix, specify the following channels and associated modalities:
-
-| Channel Name | RichText | Interactivity | TTS | AudioScript | DTMF |
-| ------------ | -------- | ------------- | --- | ----------- | ---- |
-| Web VA       | X        | X             | X   |             |      |
-| Mobile VA    | X        | X             | X   |             |      |
-| SMS          | X        |               |     |             |      |
-| IVR          |          |               | X   | X           | X    |
 
 # Scenarios Supported
 
@@ -159,26 +150,26 @@ When importing into Mix, specify the following channels and associated modalitie
   * isPayingBill
   * madePayment
 * Illustrates
-  * Auth flow
-  * Agent Escalation
-  * NLU Sources & use of all Entity Types
   * One-step correction
   * Intent Switching
+  * Auth flow
+  * Agent Escalation with context data
   * Hyperlinks for driving next turn (intent, entity, or simulated inputs)
   * Anaphora ("What's the weather in New York?" --> "book a flight there")
   * Ellipsis ("What's the weather in Tokyo?" --> "what about in Hong Kong?")
+  * NLU Sources & use of all Entity Types
   * Preserving NLU data with ability to email
   * Preserving context for omni channel
   * Channel transfer & data sharing
   * Data Integrations for all domains
   * Latency messages during data access requests
   * Location (lat, lng) from Client
-  * Wordsets
+  * Wordsets (inline)
   * Messages
     * HTML for Web
     * Unicode for SMS
     * SSML for TTS
-    * Use of Emojis in channel context
+    * Use of Emojis in channel context (Web, SMS)
   * Rich UI capabilities in Web VA / Demo Client (with hints)
      * [Bootstrap](https://getbootstrap.com/) friendly markup rendering
      * Cards (Finance)
