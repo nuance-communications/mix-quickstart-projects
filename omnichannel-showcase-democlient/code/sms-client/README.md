@@ -1,18 +1,3 @@
----
-description: "Nuance Mix Bots and Azure Communication Services - SMS Channel - Inbound and Outbound"
-languages:
-- python
-products:
-- azure
-- azure-communication-services
-- nuance-communications
-- nuance-mix
-- dlgaas
-- bots
-- sms-channel
-- omni-channel
----
-
 # Overview
 
 This app offers an integration with Nuance Mix Bots and Azure Communication Services, specifically for the SMS channel.
