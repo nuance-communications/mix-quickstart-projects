@@ -25,14 +25,14 @@ This project is optimized to work with the [Demo Client](https://github.com/nuan
 * Create an EventGrid Listener.
 * Create an App Service for the SMS Client - processing Inbound and Outbound interactions
 
-See [./sms-client/README.md] for more.
+See [README](./sms-client/README.md) for more.
 
 ### Step 3. Update the Demo Client Middleware and Handler Mapping
 
 * Copy the function
 * Update the Data Access Mapping in the client
 
-See [./middleware/README.md] for more.
+See [README](./middleware/README.md) for more.
 
 ### Step 4. Update Environment Variables
 
