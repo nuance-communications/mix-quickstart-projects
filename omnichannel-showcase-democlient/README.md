@@ -12,6 +12,36 @@ This project is optimized to work with the [Demo Client](https://github.com/nuan
 
 # Integration Tips 💡
 
+## Code Setup
+
+### Step 1. Create an AzureCommunicationServices Resource
+
+* Go to the Azure Portal.
+* Create a "Communication Services" resource
+* Create a phone number (Send and Receive SMS)
+
+### Step 2. Create an AppService for the SMS Client
+
+* Create an EventGrid Listener.
+* Create an App Service for the SMS Client - processing Inbound and Outbound interactions
+
+See [./sms-client/README.md] for more.
+
+### Step 3. Update the Demo Client Middleware and Handler Mapping
+
+* Copy the function
+* Update the Data Access Mapping in the client
+
+See [./middleware/README.md] for more.
+
+### Step 4. Update Environment Variables
+
+#### SMS Client
+Provide `acs_conn_str` and `acs_phone_number` pointing to the AzureCommunicationServices resource and phone number acquired, from Step1.
+
+#### Demo Client
+Provide `sms_client_endpoint` pointing to the AppService from Step2.
+
 ## Bot StartData
 
 * If interested in tailoring the experience, supply the USER's first and last names (optional).
