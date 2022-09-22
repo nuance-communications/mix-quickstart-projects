@@ -5,12 +5,12 @@ All rights reserved.
 This source code is licensed under the Apache-2.0 license found in
 the LICENSE.md file in the root directory of this source tree.
 """
+import sys
 import os
 import json
 import logging
 import locale
 import datetime
-import sys
 
 from flask import Flask
 from flask import request
@@ -26,7 +26,7 @@ handler = logging.StreamHandler(stream=sys.stdout)
 logger.addHandler(handler)
 
 VERSION = '1.0.0'
-CLIENT_AGENT = f'nuance-mix/sms-client-sample'
+CLIENT_AGENT = f'nuance-mix/sms-connector-sample'
 PHONE_NUMBER_ENTITY = 'ePhoneNumber'
 COUNTRY_CODE = '+1'
 
@@ -57,7 +57,7 @@ config = {
     "dlg_timeout": osenv.get('dlg_timeout', '900'),
 
     'acs_conn_str': osenv.get("acs_conn_str", "endpoint=<URL>;accesskey=<KEY>"),
-    'acs_phone_number': osenv.get('acs_phone_number', "+18001234567")
+    'acs_phone_number': osenv.get('acs_phone_number', "+18001234567"),
 }
 
 
@@ -115,6 +115,7 @@ def session_start(phone_number: str, event_time: str, start_data={}):
     start_data_payload.update(start_data)
 
     # Connect with DLGaaS
+    urn = config.get('dlg_model_ref_urn')
     payload = {
         'session_timeout_sec': config.get('dlg_timeout'),
         'selector': {
@@ -127,7 +128,6 @@ def session_start(phone_number: str, event_time: str, start_data={}):
         },
         'client_data': get_client_data_for_reporting(phone_number),
     }
-    urn = config.get('dlg_model_ref_urn')
 
     # DLGaaS Start
     res = dlgaas.start(urn, payload)
@@ -206,7 +206,8 @@ def session_start_and_prime(phone_number: str, event_time: str, transfer_data=No
         # DLGaaS Execute; DUD to match inbound empty message QA
         session = session_execute(session, phone_number)
 
-    except Exception:
+    except Exception as ex:
+        logger.exception(ex)
         return None
     else:
         return session
@@ -284,7 +285,7 @@ def process_outbound(phone_number: str, start_data: object):
     An outbound request is one where a system initiates the conversation.
 
     If a session already exists, it will be stopped within
-    Nuance Mix. A new one will be created with DLGaaS.
+    Nuance Mix Runtime. A new one will be created by DLGaaS.
     """
     session = get_session(phone_number)
 
@@ -369,7 +370,7 @@ def sms_start_session():
     # Expecting a phone number in the payload
     number = req_data.get(PHONE_NUMBER_ENTITY).replace('-', '')
 
-    assert len(number) > 0, "Invalid phone number"
+    assert len(number) != 0, "Invalid phone number"
 
     phone_number = f"{COUNTRY_CODE}{number}"
 
@@ -378,3 +379,8 @@ def sms_start_session():
     logger.debug(f"Returning {ret}")
 
     return ret, 200
+
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=8000)
+    # app.run(debug=True)

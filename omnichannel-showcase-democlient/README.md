@@ -20,27 +20,32 @@ This project is optimized to work with the [Demo Client](https://github.com/nuan
 * Create a "Communication Services" resource
 * Create a phone number (Send and Receive SMS)
 
-### Step 2. Create an AppService for the SMS Client
+### Step 2. Create an AppService for handling ACS Events, App: SMS Connector
 
 * Create an EventGrid Listener.
-* Create an App Service for the SMS Client - processing Inbound and Outbound interactions
+* Event Subscription within ACS to point to the EventGrid Listener
+  * Resource > Events > + Subscription > WebHook > URL to API (/api/updates)
+* Create an App Service for the SMS Connector - processing Inbound and Outbound interactions
+* Event Subscription within ACS to point to the SMS Connector App
+  * Resource > Events > + Subscription > WebHook > URL to API (/api/sms-topic-event-triggered)
 
-See [README](./code/sms-client/README.md) for more.
+See [README](./code/sms-connector/README.md) for more.
 
 ### Step 3. Update the Demo Client Middleware and Handler Mapping
 
-* Copy the function
-* Update the Data Access Mapping in the client
+* Copy the function into `api/`
+* Update the Data Access Mapping in the client `dlgaas.js`
 
 See [README](./code/middleware/README.md) for more.
 
 ### Step 4. Update Environment Variables
 
-#### SMS Client
+#### SMS Connector
 Provide `acs_conn_str` and `acs_phone_number` pointing to the AzureCommunicationServices resource and phone number acquired, from Step1.
+Provide the appropriate Mix Application Client Credentials obtained from the Mix.dashboard.
 
 #### Demo Client
-Provide `sms_client_endpoint` pointing to the AppService from Step2.
+Provide `sms_connector_endpoint` pointing to the AppService from Step2.
 
 ## Bot StartData
 

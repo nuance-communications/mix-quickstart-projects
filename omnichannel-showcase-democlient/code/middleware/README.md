@@ -20,4 +20,4 @@ Update [`dlgaas.js`](https://github.com/nuance-communications/mix-demo-client-az
 
 ## Step 3. Update the Function's Target Endpoint through Environment Variables
 
-Add an Environment Variable `sms_client_endpoint` pointing to the deployed AppService (SMS Client).
+Add an Environment Variable `sms_connector_endpoint` pointing to the deployed AppService (SMS Connector).

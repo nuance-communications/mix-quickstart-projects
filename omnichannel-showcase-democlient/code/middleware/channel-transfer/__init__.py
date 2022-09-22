@@ -12,7 +12,7 @@ import requests
 import azure.functions as func
 
 SUCCESS_CODE = '0'
-SMS_CLIENT_OUTBOUND_ENDPOINT = os.environ.get('sms_client_endpoint', 'https://<REPLACEME>.azurewebsites.net')
+SMS_CONNECTOR_OUTBOUND_ENDPOINT = os.environ.get('sms_connector_endpoint', 'https://<REPLACEME>.azurewebsites.net')
 
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
@@ -26,7 +26,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     # Initiate an Outbound SMS request
     # while transparently passing along the payload
     r = requests.post(
-        url=f"{SMS_CLIENT_OUTBOUND_ENDPOINT}/api/sms-start-session",
+        url=f"{SMS_CONNECTOR_OUTBOUND_ENDPOINT}/api/sms-start-session",
         headers={
             'Accept': 'application/json; charset=utf-8',
             'Accept-Language': 'en-US,en;q=0.9',
