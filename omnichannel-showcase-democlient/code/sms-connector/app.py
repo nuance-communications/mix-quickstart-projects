@@ -112,7 +112,8 @@ def session_start(phone_number: str, event_time: str, start_data={}):
     start_data_payload = {
         'channelIntegration': config.get('dlg_channel'),
     }
-    start_data_payload.update(start_data)
+    if start_data:
+        start_data_payload.update(start_data)
 
     # Connect with DLGaaS
     urn = config.get('dlg_model_ref_urn')
