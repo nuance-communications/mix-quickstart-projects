@@ -32,6 +32,18 @@
 | I'd like to travel from Phoenix to Atlanta on July twentieth | {"eArrivalCity": "Atlanta", "eDepartureCity": "Phoenix", "eDepartureDate": "July twentieth"} | iBookFlight      |   |   |   |   |   |   |   |
 | Yeah, is my flight on time?                                  |                                                                                              | iFlightStatus    |   |   |   |   |   |   |   |
 
+| Entity               | Data Type    |
+|----------------------|--------------|
+| eCity                | alphanumeric |
+| eArrivalCity         | alphanumeric |
+| eDepartureCity       | alphanumeric |
+| eDepartureDate       | DATE         |
+| eGlobalCommands      | alphanumeric |
+| eConfirmFlight       | YES_NO       |
+| eConfirmFlightLookup |  YES_NO      |
+| eBookFlight          | generic      |
+
+
 ## 1.0.3 - Mar 11, 2022
 * Update "reservation" to "reservations" for queue name
 
