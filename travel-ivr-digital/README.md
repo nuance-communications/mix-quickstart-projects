@@ -32,6 +32,10 @@
 | I'd like to travel from Phoenix to Atlanta on July twentieth | {"eArrivalCity": "Atlanta", "eDepartureCity": "Phoenix", "eDepartureDate": "July twentieth"} | iBookFlight      |   |   |   |   |   |   |   |
 | Yeah, is my flight on time?                                  |                                                                                              | iFlightStatus    |   |   |   |   |   |   |   |
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> dc13b12 (Updated README.md with description of datatypes. Removed __MACOSX directory and is now in .gitignore)
 | Entity               | Data Type    |
 |----------------------|--------------|
 | eCity                | alphanumeric |
