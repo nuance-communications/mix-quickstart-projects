@@ -26,14 +26,15 @@
         "ieva.dubinskaite@nuance.com",
         "michael.gourlay@nuance.com",
         "krishna.govindarajan@nuance.com",
-        "suzanne.bolduc@nuance.com"
+        "suzanne.bolduc@nuance.com",
+        "elisha.buhendwa@nuance.com"
     ],
     "createdTime": "2022-02-15T00:16:34.302935Z",
     "id": {
         "ontology": "c1e7b969-a5a9-4db2-8196-9461513fc2c3",
         "project": 27938
     },
-    "lastModified": "2022-02-15T00:19:01Z",
+    "lastModified": "2023-02-07T18:24:00Z",
     "name": "Nuance Mix QuickStart",
     "stats": {
         "entities": 33,
