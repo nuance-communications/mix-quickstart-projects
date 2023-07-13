@@ -1,0 +1,2109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<project xmlns:nuance="https://developer.nuance.com/mix/nlu/trsx" xml:lang="eng-USA" nuance:version="2.6" nuance:enginePackVersion="hosted">
+    <metadata>
+        <entry key="created_at">2020-06-25 22:00:29+00:00</entry>
+        <entry key="created_at">2020-02-21 21:25:50+00:00</entry>
+        <entry key="created_at">2020-04-17 13:58:11+00:00</entry>
+        <entry key="created_at">2020-07-03 02:22:37+00:00</entry>
+        <entry key="created_at">2020-08-24 18:23:53+00:00</entry>
+        <entry key="created_at">2020-11-04 21:53:44+00:00</entry>
+        <entry key="created_at">2020-11-23 15:07:40+00:00</entry>
+        <entry key="created_at">2020-11-19 07:41:11+00:00</entry>
+        <entry key="created_at">2020-12-02 22:31:18+00:00</entry>
+        <entry key="created_by">Ying Zhai</entry>
+        <entry key="created_by">ying.zhai@nuance.com</entry>
+        <entry key="created_by">Abhishek Rohatgi</entry>
+        <entry key="created_by">abhishek.rohatgi@nuance.com</entry>
+        <entry key="created_by">zhuoyan.li@nuance.com</entry>
+        <entry key="created_by">zhuoyan li</entry>
+        <entry key="original_trs">stage2.trs</entry>
+        <entry key="original_trs">extra_train.I_REQ_INFO.trs</entry>
+        <entry key="original_trs">train_data_final.cut.trs</entry>
+        <entry key="original_trs">train_extra.cut.aligned.trs</entry>
+    </metadata>
+    <sources>
+        <source name="nuance_custom_data" displayName="nuance_custom_data" version="1.0" type="CUSTOM" useForOOV="true"/>
+    </sources>
+    <ontology base="http://localhost:8080/resources/ontology-1.0.xml">
+        <intents>
+            <intent name="I_ADD_PAYEE">
+                <links>
+                    <link conceptref="BUSINESS_NAME"/>
+                </links>
+            </intent>
+            <intent name="I_REQUEST_NEW_PIN">
+                <links>
+                    <link conceptref="CARD_TYPE"/>
+                </links>
+            </intent>
+            <intent name="I_REQUEST_OPEN_ACCOUNT">
+                <links>
+                    <link conceptref="ACCOUNT_NAME"/>
+                </links>
+            </intent>
+            <intent name="I_TRANSFER_FUNDS">
+                <links>
+                    <link conceptref="AMOUNT"/>
+                    <link conceptref="FROM_ACCOUNT"/>
+                    <link conceptref="TO_ACCOUNT"/>
+                </links>
+            </intent>
+            <intent name="I_REQUEST_SPEAK_TO_AGENT"/>
+            <intent name="I_REQUEST_DUE_AMOUNT">
+                <links>
+                    <link conceptref="PAYEE"/>
+                </links>
+            </intent>
+            <intent name="I_REPORT_LOST_STOLEN_CARD">
+                <links>
+                    <link conceptref="CARD_TYPE"/>
+                </links>
+            </intent>
+            <intent name="I_INQUIRE_BRANCH_LOCATION"/>
+            <intent name="I_REQUEST_ACCOUNT_BALANCE">
+                <links>
+                    <link conceptref="ACCOUNT_NAME"/>
+                </links>
+            </intent>
+            <intent name="I_REQUEST_TRANSACTION_INFO">
+                <links>
+                    <link conceptref="ACCOUNT_NAME"/>
+                    <link conceptref="RECURRENCE"/>
+                    <link conceptref="TRANSACTION_TYPE"/>
+                    <link conceptref="BUSINESS_NAME"/>
+                    <link conceptref="CATEGORY"/>
+                    <link conceptref="TIMEFRAME"/>
+                </links>
+            </intent>
+            <intent name="I_REQUEST_ETA"/>
+            <intent name="I_YES_NO">
+                <links>
+                    <link conceptref="YES_NO_custom"/>
+                </links>
+            </intent>
+            <intent name="I_REQUEST_BILL_REASON">
+                <links>
+                    <link conceptref="CATEGORY"/>
+                </links>
+            </intent>
+            <intent name="I_INQUIRE_MORTGAGE"/>
+            <intent name="I_GOODBYE"/>
+            <intent name="I_REQUEST_BILL_DUE_DATE">
+                <links>
+                    <link conceptref="PAYEE"/>
+                </links>
+            </intent>
+            <intent name="I_REPORT_FRAUD"/>
+            <intent name="I_PAY_BILL">
+                <links>
+                    <link conceptref="FROM_ACCOUNT"/>
+                    <link conceptref="AMOUNT"/>
+                    <link conceptref="GENERIC_ORDER"/>
+                    <link conceptref="PAYEE"/>
+                    <link conceptref="TIMEFRAME"/>
+                </links>
+            </intent>
+        </intents>
+        <concepts>
+            <concept name="YES_NO_custom" dataType="yes_no">
+                <relations>
+                    <relation type="isA" conceptref="YES_NO"/>
+                </relations>
+            </concept>
+            <concept name="TIMEFRAME" dataType="date">
+                <relations>
+                    <relation type="isA" conceptref="DATE"/>
+                </relations>
+            </concept>
+            <concept name="AMOUNT" dataType="amount">
+                <relations>
+                    <relation type="isA" conceptref="nuance_AMOUNT"/>
+                </relations>
+            </concept>
+            <concept name="GENERIC_ORDER" dataType="not_set">
+                <relations>
+                    <relation type="isA" conceptref="nuance_ORDINAL_NUMBER"/>
+                </relations>
+            </concept>
+            <concept name="TO_ACCOUNT" dataType="not_set">
+                <relations>
+                    <relation type="isA" conceptref="ACCOUNT_NAME"/>
+                </relations>
+            </concept>
+            <concept name="FROM_ACCOUNT" dataType="not_set">
+                <relations>
+                    <relation type="isA" conceptref="ACCOUNT_NAME"/>
+                </relations>
+            </concept>
+            <concept name="CARD_TYPE" dataType="not_set"/>
+            <concept name="CATEGORY" dataType="not_set"/>
+            <concept name="TRANSACTION_TYPE" dataType="not_set"/>
+            <concept name="ACCOUNT_NAME" dataType="not_set"/>
+            <concept name="BUSINESS_NAME" dataType="not_set"/>
+            <concept name="PAYEE" dataType="not_set"/>
+            <concept name="RECURRENCE" dataType="not_set"/>
+        </concepts>
+    </ontology>
+    <dictionaries>
+        <dictionary conceptref="CARD_TYPE">
+            <entry literal="access card" value="access"/>
+            <entry literal="atm" value="debit"/>
+            <entry literal="atm card" value="debit"/>
+            <entry literal="credit" value="credit"/>
+            <entry literal="debit" value="debit"/>
+            <entry literal="debit card" value="debit"/>
+            <entry literal="gold card" value="gold"/>
+            <entry literal="master card" value="mastercard"/>
+            <entry literal="mastercard" value="mastercard"/>
+            <entry literal="silver card" value="silver"/>
+            <entry literal="visa" value="visa"/>
+            <entry literal="visa card" value="visa"/>
+        </dictionary>
+        <dictionary conceptref="CATEGORY">
+            <entry literal="cable" value="cable"/>
+            <entry literal="cell phone" value="cell phone"/>
+            <entry literal="dental" value="medical"/>
+            <entry literal="dining" value="dining"/>
+            <entry literal="gas" value="gas"/>
+            <entry literal="gift" value="gifts"/>
+            <entry literal="gifts" value="gifts"/>
+            <entry literal="grocery" value="grocery"/>
+            <entry literal="insurance" value="insurance"/>
+            <entry literal="meal" value="meal"/>
+            <entry literal="medical" value="medical"/>
+            <entry literal="mobile" value="mobile"/>
+            <entry literal="phone" value="phone"/>
+            <entry literal="present" value="gifts"/>
+            <entry literal="presents" value="gifts"/>
+            <entry literal="restaurant" value="meal"/>
+            <entry literal="shopping" value="shopping"/>
+            <entry literal="tv" value="tv"/>
+            <entry literal="utility" value="utility"/>
+            <entry literal="video" value="video"/>
+        </dictionary>
+        <dictionary conceptref="TRANSACTION_TYPE">
+            <entry literal="charge" value="payment"/>
+            <entry literal="charges" value="payment"/>
+            <entry literal="deposit" value="deposit"/>
+            <entry literal="deposits" value="deposit"/>
+            <entry literal="expense" value="payment"/>
+            <entry literal="expenses" value="payment"/>
+            <entry literal="pay" value="payment"/>
+            <entry literal="payment" value="payment"/>
+            <entry literal="payments" value="payment"/>
+            <entry literal="transfer" value="transfer"/>
+            <entry literal="transfers" value="transfer"/>
+            <entry literal="withdrawal" value="withdrawal"/>
+            <entry literal="withdrawals" value="withdrawal"/>
+        </dictionary>
+        <dictionary conceptref="ACCOUNT_NAME">
+            <entry literal="american express" value="american express"/>
+            <entry literal="american express card" value="american express"/>
+            <entry literal="american express gold card" value="american express gold card"/>
+            <entry literal="american express platinum card" value="american express platinum card"/>
+            <entry literal="american express silver card" value="american express silver card"/>
+            <entry literal="checking" value="checking"/>
+            <entry literal="cheque" value="checking"/>
+            <entry literal="chequing" value="checking"/>
+            <entry literal="credit card" value="credit card"/>
+            <entry literal="credit cards" value="credit card"/>
+            <entry literal="first checking" value="first checking"/>
+            <entry literal="gold" value="gold card"/>
+            <entry literal="gold card" value="gold card"/>
+            <entry literal="jbc card" value="jbc card"/>
+            <entry literal="joint" value="joint"/>
+            <entry literal="joint checking" value="joint checking"/>
+            <entry literal="joint cheque" value="joint checking"/>
+            <entry literal="joint chequing" value="joint checking"/>
+            <entry literal="joint saving" value="joint savings"/>
+            <entry literal="joint savings" value="joint savings"/>
+            <entry literal="main checking" value="checking"/>
+            <entry literal="main chequing" value="checking"/>
+            <entry literal="main saving" value="saving"/>
+            <entry literal="main savings" value="saving"/>
+            <entry literal="master card" value="master card"/>
+            <entry literal="master gold card" value="master gold card"/>
+            <entry literal="master silver card" value="master silver card"/>
+            <entry literal="mastercard" value="master card"/>
+            <entry literal="personal checking" value="solo checking"/>
+            <entry literal="personal chequing" value="solo checking"/>
+            <entry literal="personal saving" value="solo saving"/>
+            <entry literal="personal savings" value="solo saving"/>
+            <entry literal="platinum card" value="platinum card"/>
+            <entry literal="saving" value="saving"/>
+            <entry literal="savings" value="saving"/>
+            <entry literal="silver" value="Silver Card"/>
+            <entry literal="silver card" value="Silver Card"/>
+            <entry literal="solo checking" value="solo checking"/>
+            <entry literal="solo cheque" value="solo checking"/>
+            <entry literal="solo chequing" value="solo checking"/>
+            <entry literal="solo saving" value="solo saving"/>
+            <entry literal="solo savings" value="solo saving"/>
+            <entry literal="vacation saving" value="vacation saving"/>
+            <entry literal="vacation savings" value="vacation saving"/>
+            <entry literal="visa card" value="visa card"/>
+            <entry literal="visa gold card" value="visa gold card"/>
+            <entry literal="visa platinum card" value="visa platinum card"/>
+            <entry literal="visa silver card" value="visa silver card"/>
+        </dictionary>
+        <dictionary conceptref="BUSINESS_NAME">
+            <entry literal="amazon" value="Amazon"/>
+            <entry literal="cheesecake factory" value="cheesecake factory"/>
+            <entry literal="chipotle" value="chipotle"/>
+            <entry literal="costco" value="costco"/>
+            <entry literal="ebay" value="ebay"/>
+            <entry literal="home depot" value="home depot"/>
+            <entry literal="tutta bella" value="tutta bella"/>
+            <entry literal="verizon" value="verizon"/>
+            <entry literal="walmart" value="walmart"/>
+        </dictionary>
+        <dictionary conceptref="PAYEE">
+            <entry literal="american express" value="american express"/>
+            <entry literal="american express bill" value="american express"/>
+            <entry literal="american express card" value="american express card"/>
+            <entry literal="american express card bill" value="american express card"/>
+            <entry literal="cable bill" value="cable bill"/>
+            <entry literal="cable bill silver card" value="cable bill and silver card"/>
+            <entry literal="cable bills" value="cable bills"/>
+            <entry literal="cell phone bill" value="cell phone bill"/>
+            <entry literal="cell phone bills" value="cell phone bills"/>
+            <entry literal="credit card" value="credit card"/>
+            <entry literal="credit card bill" value="credit card bill"/>
+            <entry literal="dining bill" value="dining bill"/>
+            <entry literal="electricity bill" value="electricity bill"/>
+            <entry literal="electricity bill silver card" value="electricity bill and silver card"/>
+            <entry literal="gas bill" value="gas bill"/>
+            <entry literal="gas bill silver card" value="gas bill and silver card"/>
+            <entry literal="gas bills" value="gas bills"/>
+            <entry literal="gold" value="Gold Card"/>
+            <entry literal="gold card" value="Gold Card"/>
+            <entry literal="gold card bill" value="gold card bill"/>
+            <entry literal="gold cards" value="Gold Card"/>
+            <entry literal="jbc card" value="jbc card"/>
+            <entry literal="jbc card bill" value="jbc card bill"/>
+            <entry literal="landline bill" value="landline bill"/>
+            <entry literal="landline bills" value="landline bills"/>
+            <entry literal="loan" value="loan"/>
+            <entry literal="master card" value="master card"/>
+            <entry literal="master card bill" value="master card bill"/>
+            <entry literal="mobile bill" value="mobile bill"/>
+            <entry literal="mobile bills" value="mobile bills"/>
+            <entry literal="mortgage" value="mortgage"/>
+            <entry literal="network bill" value="network bill"/>
+            <entry literal="phone bill" value="phone bill"/>
+            <entry literal="phone bill silver card" value="phone bill and silver card"/>
+            <entry literal="phone bills" value="phone bills"/>
+            <entry literal="platinum card" value="platinum card bill"/>
+            <entry literal="platinum card bill" value="platinum card bill"/>
+            <entry literal="restaurant bill" value="restaurant bill"/>
+            <entry literal="shopping bill" value="shopping bill"/>
+            <entry literal="silver" value="Silver Card"/>
+            <entry literal="silver card" value="Silver Card"/>
+            <entry literal="silver card bill" value="silver card bill"/>
+            <entry literal="silver cards" value="Silver Card"/>
+            <entry literal="tv bill" value="tv bill"/>
+            <entry literal="tv bills" value="tv bills"/>
+            <entry literal="video bill" value="video bill"/>
+            <entry literal="video bills" value="video bills"/>
+            <entry literal="visa card" value="visa card"/>
+            <entry literal="visa card bill" value="visa card bill"/>
+            <entry literal="visa gold card" value="visa gold card"/>
+            <entry literal="visa platium card" value="visa platium card"/>
+            <entry literal="visa silver card" value="visa silver card"/>
+            <entry literal="water bill" value="water bill"/>
+            <entry literal="water bill silver card" value="water bill and silver card"/>
+        </dictionary>
+        <dictionary conceptref="RECURRENCE">
+            <entry literal="don't recur" value="not recurring"/>
+            <entry literal="don't repeat" value="not recurring"/>
+            <entry literal="non-recurring" value="not recurring"/>
+            <entry literal="non-repeating" value="not recurring"/>
+            <entry literal="nonrecurring" value="not recurring"/>
+            <entry literal="nonrepeating" value="not recurring"/>
+            <entry literal="not recurring" value="not recurring"/>
+            <entry literal="one time" value="not recurring"/>
+            <entry literal="one-time" value="not recurring"/>
+            <entry literal="pending" value="pending"/>
+            <entry literal="recur" value="recurring"/>
+            <entry literal="recurring" value="recurring"/>
+            <entry literal="repeat" value="recurring"/>
+            <entry literal="repeating" value="recurring"/>
+        </dictionary>
+    </dictionaries>
+    <samples>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">find<annotation conceptref="CATEGORY">gas</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">charges</annotation>on my<annotation conceptref="ACCOUNT_NAME">american express silver card</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">what did i<annotation conceptref="TRANSACTION_TYPE">pay</annotation>in<annotation conceptref="TIMEFRAME">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">2021</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">find<annotation conceptref="TRANSACTION_TYPE">charges</annotation>in<annotation conceptref="TIMEFRAME">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">2022</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">what are my<annotation conceptref="ACCOUNT_NAME">american express</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">charges</annotation>from<annotation conceptref="TIMEFRAME">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">2023</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">find my<annotation conceptref="CATEGORY">restaurant</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">expenses</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">look for my<annotation conceptref="CATEGORY">shopping</annotation>transactions on<annotation conceptref="TIMEFRAME">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">christmas eve</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="ACCOUNT_NAME">master gold card</annotation>charges on<annotation conceptref="TIMEFRAME">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">valentine's day</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">i need to know my<annotation conceptref="CATEGORY">grocery</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">expenses</annotation>around<annotation conceptref="TIMEFRAME">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">christmas</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">i need to know my<annotation conceptref="CATEGORY">meal</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">expenses</annotation>near<annotation conceptref="TIMEFRAME">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">new year's eve</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="CATEGORY">grocery</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">expenses</annotation>around<annotation conceptref="TIMEFRAME">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">valentine's day</annotation>
+                </annotation>
+            </annotation>please</sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">what<annotation conceptref="CATEGORY">grocery</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">expenses</annotation>do I have for<annotation conceptref="TIMEFRAME">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">christmas eve</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">what<annotation conceptref="CATEGORY">grocery</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">expenses</annotation>did I have in<annotation conceptref="TIMEFRAME">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">2022</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="ACCOUNT_NAME">silver card</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">charges</annotation>in<annotation conceptref="TIMEFRAME">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">2023</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">look for<annotation conceptref="CATEGORY">dining</annotation>transactions<annotation conceptref="TIMEFRAME">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">on new year's day</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">show my<annotation conceptref="CATEGORY">shopping</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">expenses</annotation>in<annotation conceptref="TIMEFRAME">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">september</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">show me more about my<annotation conceptref="CATEGORY">shopping</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">charges</annotation>in<annotation conceptref="TIMEFRAME">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">april</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">what<annotation conceptref="CATEGORY">shopping</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">expenses</annotation>do i have near<annotation conceptref="TIMEFRAME">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">new year's eve</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">what<annotation conceptref="CATEGORY">dining</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">charges</annotation>do i have around<annotation conceptref="TIMEFRAME">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">christmas</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">current<annotation conceptref="ACCOUNT_NAME">checking</annotation>account balance</sample>
+        <sample intentref="I_REQUEST_BILL_DUE_DATE" count="1" excluded="false" fullyVerified="true">when is<annotation conceptref="PAYEE">visa card bill</annotation>due</sample>
+        <sample intentref="I_REQUEST_BILL_DUE_DATE" count="1" excluded="false" fullyVerified="true">when is<annotation conceptref="PAYEE">tv bills</annotation>due</sample>
+        <sample intentref="I_REQUEST_BILL_DUE_DATE" count="1" excluded="false" fullyVerified="true">when is<annotation conceptref="PAYEE">tv bill</annotation>due</sample>
+        <sample intentref="I_REQUEST_BILL_DUE_DATE" count="1" excluded="false" fullyVerified="true">what is the due date for my<annotation conceptref="PAYEE">gold card bill</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_BILL_DUE_DATE" count="1" excluded="false" fullyVerified="true">what is the due date for my<annotation conceptref="PAYEE">gold card</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_BILL_DUE_DATE" count="1" excluded="false" fullyVerified="true">what is the due date for my<annotation conceptref="PAYEE">cable bill</annotation>
+        </sample>
+        <sample intentref="I_REPORT_FRAUD" count="1" excluded="false" fullyVerified="true">report illegal charges</sample>
+        <sample intentref="I_REPORT_FRAUD" count="1" excluded="false" fullyVerified="true">report fraudent charges please</sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay<annotation conceptref="AMOUNT">thirty five dollars</annotation>towards<annotation conceptref="PAYEE">credit card</annotation>
+        </sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay<annotation conceptref="AMOUNT">thirty five dollars</annotation>towards<annotation conceptref="PAYEE">landline bill</annotation>
+        </sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay off all of my<annotation conceptref="PAYEE">silver card bill</annotation>
+        </sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay off my<annotation conceptref="PAYEE">cable bill</annotation>
+            <annotation conceptref="AMOUNT">entirely</annotation>
+        </sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay off my<annotation conceptref="PAYEE">cable bills</annotation>
+            <annotation conceptref="AMOUNT">in full</annotation>
+        </sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay off my<annotation conceptref="PAYEE">gas bill</annotation>
+            <annotation conceptref="AMOUNT">entirely</annotation>
+        </sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay off my<annotation conceptref="PAYEE">gas bill</annotation>using my<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">checking</annotation>
+            </annotation>account</sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay off my<annotation conceptref="PAYEE">gold card</annotation>with<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">main checking</annotation>
+            </annotation>account</sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay off my<annotation conceptref="PAYEE">mobile bill</annotation>
+            <annotation conceptref="AMOUNT">entirely</annotation>
+        </sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay off my<annotation conceptref="PAYEE">mobile bill</annotation>from my<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">saving</annotation>
+            </annotation>account</sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay<annotation conceptref="AMOUNT">thirty five dollars</annotation>on my<annotation conceptref="PAYEE">master card bill</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">check my<annotation conceptref="ACCOUNT_NAME">platinum card</annotation>amount</sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">check my<annotation conceptref="ACCOUNT_NAME">jbc card</annotation>balance</sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">check my<annotation conceptref="ACCOUNT_NAME">jbc card</annotation>amount please</sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">do i have any<annotation conceptref="CATEGORY">shopping</annotation>transactions on my<annotation conceptref="ACCOUNT_NAME">american express card</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">do i have any<annotation conceptref="CATEGORY">shopping</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">charges</annotation>on my<annotation conceptref="ACCOUNT_NAME">visa gold card</annotation>
+        </sample>
+        <sample intentref="NO_INTENT" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="TIMEFRAME">this month</annotation>
+        </sample>
+        <sample intentref="I_INQUIRE_MORTGAGE" count="1" excluded="false" fullyVerified="false">I'm looking for a lower rate on my current mortgage</sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">transfer<annotation conceptref="AMOUNT">thirty five dollars</annotation>from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">chequing</annotation>
+            </annotation>to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint saving</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">transfer<annotation conceptref="AMOUNT">thirty five dollars</annotation>from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">chequing</annotation>
+            </annotation>to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">saving</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">transfer<annotation conceptref="AMOUNT">thirty five dollars</annotation>from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint checking</annotation>
+            </annotation>to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">chequing</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_INQUIRE_MORTGAGE" count="1" excluded="false" fullyVerified="true">How do interest rates and apr differ from each other ?</sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="false">Move money</sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">Can I transfer<annotation conceptref="AMOUNT">eighty five fifty</annotation>from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint saving</annotation>
+            </annotation>to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">main saving</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">I want to transfer<annotation conceptref="AMOUNT">one hundred and fifty dollars</annotation>from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">checking</annotation>
+            </annotation>to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">I'd like to transfer<annotation conceptref="AMOUNT">fifty dollars</annotation>from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">personal saving</annotation>
+            </annotation>to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint checking</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">can I please transfer<annotation conceptref="AMOUNT">fifty dollars</annotation>from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint checking</annotation>
+            </annotation>to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">checking</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">show my<annotation conceptref="ACCOUNT_NAME">joint saving</annotation>account<annotation conceptref="TRANSACTION_TYPE">expenses</annotation>please</sample>
+        <sample intentref="I_REQUEST_DUE_AMOUNT" count="1" excluded="false" fullyVerified="true">what is my<annotation conceptref="PAYEE">jbc card bill</annotation>due amount</sample>
+        <sample intentref="I_REQUEST_DUE_AMOUNT" count="1" excluded="false" fullyVerified="true">what is<annotation conceptref="PAYEE">jbc card</annotation>due amount</sample>
+        <sample intentref="I_REQUEST_DUE_AMOUNT" count="1" excluded="false" fullyVerified="true">what is<annotation conceptref="PAYEE">jbc card bill</annotation>due amount</sample>
+        <sample intentref="I_REQUEST_DUE_AMOUNT" count="1" excluded="false" fullyVerified="true">what is due on<annotation conceptref="PAYEE">platinum card bill</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_DUE_AMOUNT" count="1" excluded="false" fullyVerified="true">what is due on my<annotation conceptref="PAYEE">platinum card</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_DUE_AMOUNT" count="1" excluded="false" fullyVerified="true">what is due on<annotation conceptref="PAYEE">jbc card bill</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">what were my<annotation conceptref="ACCOUNT_NAME">visa gold card</annotation>transactions<annotation conceptref="TIMEFRAME">august</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">show my<annotation conceptref="ACCOUNT_NAME">american express silver card</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">expenses</annotation>please</sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">what are my<annotation conceptref="ACCOUNT_NAME">visa gold card</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">charges</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">show my<annotation conceptref="ACCOUNT_NAME">master silver card</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">expenses</annotation>please</sample>
+        <sample intentref="NO_INTENT" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="AMOUNT">twenty dollars</annotation>
+        </sample>
+        <sample intentref="NO_INTENT" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="AMOUNT">thirty five twenty seven</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_SPEAK_TO_AGENT" count="6" excluded="false" fullyVerified="false">like to talk to customer service or an operator</sample>
+        <sample intentref="I_REQUEST_SPEAK_TO_AGENT" count="6" excluded="false" fullyVerified="false">i'm calling to talk to a representative</sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">i want my<annotation conceptref="ACCOUNT_NAME">visa silver card</annotation>transactions please</sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint</annotation>
+            </annotation>to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint chequing</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">main saving</annotation>
+            </annotation>to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">chequing</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_YES_NO" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="YES_NO_custom">
+                <annotation conceptref="YES_NO">
+                    <annotation conceptref="nuance_BOOLEAN">ok</annotation>
+                </annotation>
+            </annotation>thank you</sample>
+        <sample intentref="I_YES_NO" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="YES_NO_custom">
+                <annotation conceptref="YES_NO">
+                    <annotation conceptref="nuance_BOOLEAN">please</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">how much do i owe on my<annotation conceptref="ACCOUNT_NAME">silver card</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">how much do i have on my<annotation conceptref="ACCOUNT_NAME">master silver card</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">do i have any<annotation conceptref="CATEGORY">meal</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">expenses</annotation>on my<annotation conceptref="ACCOUNT_NAME">american express silver card</annotation>
+        </sample>
+        <sample intentref="I_REPORT_LOST_STOLEN_CARD" count="1" excluded="false" fullyVerified="true">i need a new<annotation conceptref="CARD_TYPE">debit card</annotation>
+        </sample>
+        <sample intentref="I_REPORT_LOST_STOLEN_CARD" count="1" excluded="false" fullyVerified="true">i misplaced my<annotation conceptref="CARD_TYPE">debit card</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_BILL_DUE_DATE" count="1" excluded="false" fullyVerified="true">when is my<annotation conceptref="PAYEE">tv bill</annotation>due</sample>
+        <sample intentref="I_REQUEST_BILL_DUE_DATE" count="1" excluded="false" fullyVerified="true">when is my<annotation conceptref="PAYEE">platinum card</annotation>due</sample>
+        <sample intentref="I_REQUEST_BILL_DUE_DATE" count="1" excluded="false" fullyVerified="true">when is my<annotation conceptref="PAYEE">platinum card bill</annotation>due</sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">personal chequing</annotation>
+            </annotation>to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint chequing</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">personal chequing</annotation>
+            </annotation>to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint saving</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">personal chequing</annotation>
+            </annotation>to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">main chequing</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">saving</annotation>
+            </annotation>to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">chequing</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">i need to transfer some money</sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">please transfer<annotation conceptref="AMOUNT">eighty five fifty</annotation>from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint</annotation>
+            </annotation>to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint chequing</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">please transfer<annotation conceptref="AMOUNT">fifty dollars</annotation>from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint checking</annotation>
+            </annotation>to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">main chequing</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">please transfer<annotation conceptref="AMOUNT">one hundred and fifty dollars</annotation>from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">checking</annotation>
+            </annotation>to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">main chequing</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">From my<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint checking</annotation>
+            </annotation>account</sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">I would like to transfer from my<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">checking</annotation>
+            </annotation>account</sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay my<annotation conceptref="PAYEE">water bill</annotation>from this account</sample>
+        <sample intentref="I_INQUIRE_MORTGAGE" count="1" excluded="false" fullyVerified="true">I'm looking at refinancing my house</sample>
+        <sample intentref="I_INQUIRE_MORTGAGE" count="1" excluded="false" fullyVerified="true">I would like to refinance my house</sample>
+        <sample intentref="I_REQUEST_OPEN_ACCOUNT" count="1" excluded="false" fullyVerified="true">help me to open a<annotation conceptref="ACCOUNT_NAME">joint</annotation>account</sample>
+        <sample intentref="NO_INTENT" count="1" excluded="false" fullyVerified="true">my<annotation conceptref="ACCOUNT_NAME">checking</annotation>account</sample>
+        <sample intentref="I_REQUEST_BILL_DUE_DATE" count="1" excluded="false" fullyVerified="true">when is<annotation conceptref="PAYEE">cable bill</annotation>due</sample>
+        <sample intentref="I_REPORT_LOST_STOLEN_CARD" count="1" excluded="false" fullyVerified="true">my<annotation conceptref="CARD_TYPE">debit card</annotation>has been stolen</sample>
+        <sample intentref="I_REQUEST_BILL_DUE_DATE" count="1" excluded="false" fullyVerified="true">what is the due date for<annotation conceptref="PAYEE">silver card</annotation>
+        </sample>
+        <sample intentref="I_REPORT_LOST_STOLEN_CARD" count="1" excluded="false" fullyVerified="false">lost card</sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">To<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint chequing</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_INQUIRE_BRANCH_LOCATION" count="1" excluded="false" fullyVerified="false">find nearest branch</sample>
+        <sample intentref="I_INQUIRE_BRANCH_LOCATION" count="1" excluded="false" fullyVerified="false">find closest branch</sample>
+        <sample intentref="I_INQUIRE_BRANCH_LOCATION" count="1" excluded="false" fullyVerified="false">branches near me</sample>
+        <sample intentref="I_INQUIRE_BRANCH_LOCATION" count="1" excluded="false" fullyVerified="false">closest branch</sample>
+        <sample intentref="I_INQUIRE_BRANCH_LOCATION" count="1" excluded="false" fullyVerified="false">nearest branch</sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay my<annotation conceptref="PAYEE">cell phone bill</annotation>using my<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">personal checking</annotation>
+            </annotation>account</sample>
+        <sample intentref="I_INQUIRE_BRANCH_LOCATION" count="1" excluded="false" fullyVerified="true">i need to find the nearest bank location</sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay off my<annotation conceptref="PAYEE">phone bill</annotation>from my<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">main saving</annotation>
+            </annotation>account</sample>
+        <sample intentref="I_REPORT_FRAUD" count="1" excluded="false" fullyVerified="true">i didn't go there</sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">what's the balance in my<annotation conceptref="ACCOUNT_NAME">personal chequing</annotation>account</sample>
+        <sample intentref="I_INQUIRE_MORTGAGE" count="1" excluded="false" fullyVerified="false">Can I get a better mortgate rate ?</sample>
+        <sample intentref="I_YES_NO" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="YES_NO_custom">
+                <annotation conceptref="YES_NO">
+                    <annotation conceptref="nuance_BOOLEAN">correct</annotation>
+                </annotation>
+            </annotation>that's correct</sample>
+        <sample intentref="I_YES_NO" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="YES_NO_custom">
+                <annotation conceptref="YES_NO">
+                    <annotation conceptref="nuance_BOOLEAN">correct</annotation>
+                </annotation>
+            </annotation>that's right</sample>
+        <sample intentref="I_YES_NO" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="YES_NO_custom">
+                <annotation conceptref="YES_NO">
+                    <annotation conceptref="nuance_BOOLEAN">right</annotation>
+                </annotation>
+            </annotation>please</sample>
+        <sample intentref="I_YES_NO" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="YES_NO_custom">
+                <annotation conceptref="YES_NO">
+                    <annotation conceptref="nuance_BOOLEAN">right</annotation>
+                </annotation>
+            </annotation>that's right</sample>
+        <sample intentref="I_YES_NO" count="1" excluded="false" fullyVerified="true">that's<annotation conceptref="YES_NO_custom">
+                <annotation conceptref="YES_NO">
+                    <annotation conceptref="nuance_BOOLEAN">right</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_INQUIRE_BRANCH_LOCATION" count="1" excluded="false" fullyVerified="true">yes but I need to know where my nearest branch is</sample>
+        <sample intentref="I_INQUIRE_BRANCH_LOCATION" count="1" excluded="false" fullyVerified="true">i'll go to a bank branch instead</sample>
+        <sample intentref="I_INQUIRE_BRANCH_LOCATION" count="1" excluded="false" fullyVerified="true">where is the bank located</sample>
+        <sample intentref="I_INQUIRE_BRANCH_LOCATION" count="1" excluded="false" fullyVerified="true">where are bank branches</sample>
+        <sample intentref="I_INQUIRE_BRANCH_LOCATION" count="1" excluded="false" fullyVerified="true">where is the nearest bank</sample>
+        <sample intentref="I_INQUIRE_BRANCH_LOCATION" count="1" excluded="false" fullyVerified="true">tell me where the nearest branch is location</sample>
+        <sample intentref="I_YES_NO" count="1" excluded="false" fullyVerified="true">i'm<annotation conceptref="YES_NO_custom">
+                <annotation conceptref="YES_NO">
+                    <annotation conceptref="nuance_BOOLEAN">not interested</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">do i have a balance on my<annotation conceptref="ACCOUNT_NAME">american express card</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">what's my<annotation conceptref="ACCOUNT_NAME">american express gold card</annotation>statement amount</sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">do i have a<annotation conceptref="ACCOUNT_NAME">visa platinum card</annotation>balance</sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">do i have a<annotation conceptref="ACCOUNT_NAME">visa card</annotation>balance</sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">do i have a<annotation conceptref="ACCOUNT_NAME">credit card</annotation>balance</sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">please transfer<annotation conceptref="AMOUNT">one hundred and fifty dollars</annotation>from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint chequing</annotation>
+            </annotation>to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">chequing</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">please transfer<annotation conceptref="AMOUNT">one hundred and fifty dollars</annotation>from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint chequing</annotation>
+            </annotation>to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">personal saving</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">please transfer<annotation conceptref="AMOUNT">thirty five dollars</annotation>from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint</annotation>
+            </annotation>to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">main chequing</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_REQUEST_BILL_DUE_DATE" count="1" excluded="false" fullyVerified="true">when is my<annotation conceptref="PAYEE">gas bill</annotation>due</sample>
+        <sample intentref="I_REQUEST_BILL_DUE_DATE" count="1" excluded="false" fullyVerified="true">when is my<annotation conceptref="PAYEE">cell phone bills</annotation>due</sample>
+        <sample intentref="I_REQUEST_BILL_DUE_DATE" count="1" excluded="false" fullyVerified="true">when is<annotation conceptref="PAYEE">mobile bill</annotation>due</sample>
+        <sample intentref="I_YES_NO" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="YES_NO_custom">
+                <annotation conceptref="YES_NO">
+                    <annotation conceptref="nuance_BOOLEAN">Yes</annotation>
+                </annotation>
+            </annotation>please</sample>
+        <sample intentref="I_YES_NO" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="YES_NO_custom">
+                <annotation conceptref="YES_NO">
+                    <annotation conceptref="nuance_BOOLEAN">Yes</annotation>
+                </annotation>
+            </annotation>please do</sample>
+        <sample intentref="I_YES_NO" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="YES_NO_custom">
+                <annotation conceptref="YES_NO">
+                    <annotation conceptref="nuance_BOOLEAN">Sure</annotation>
+                </annotation>
+            </annotation>please go ahead</sample>
+        <sample intentref="I_YES_NO" count="1" excluded="false" fullyVerified="true">i<annotation conceptref="YES_NO_custom">
+                <annotation conceptref="YES_NO">
+                    <annotation conceptref="nuance_BOOLEAN">confirm</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_YES_NO" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="YES_NO_custom">
+                <annotation conceptref="YES_NO">
+                    <annotation conceptref="nuance_BOOLEAN">correct</annotation>
+                </annotation>
+            </annotation>please</sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay<annotation conceptref="AMOUNT">thirty five dollars</annotation>of my<annotation conceptref="PAYEE">silver card bill</annotation>
+        </sample>
+        <sample intentref="I_REPORT_LOST_STOLEN_CARD" count="1" excluded="false" fullyVerified="false">replace card</sample>
+        <sample intentref="I_REQUEST_SPEAK_TO_AGENT" count="1" excluded="false" fullyVerified="false">talk to live person</sample>
+        <sample intentref="I_REQUEST_SPEAK_TO_AGENT" count="1" excluded="false" fullyVerified="false">i need to i need to speak to a representative</sample>
+        <sample intentref="I_REQUEST_SPEAK_TO_AGENT" count="4" excluded="false" fullyVerified="false">i want talk to an agent please</sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="ACCOUNT_NAME">american express gold card</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">expenses</annotation>in<annotation conceptref="TIMEFRAME">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">october</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="ACCOUNT_NAME">american express card</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">charges</annotation>in<annotation conceptref="TIMEFRAME">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">august</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">show my<annotation conceptref="ACCOUNT_NAME">credit card</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">charges</annotation>please</sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">what is the amount on my<annotation conceptref="ACCOUNT_NAME">visa gold card</annotation>statement</sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">what is the amount on my<annotation conceptref="ACCOUNT_NAME">american express</annotation>statement</sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">what is my<annotation conceptref="ACCOUNT_NAME">visa gold card</annotation>statement balance</sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">what is my<annotation conceptref="ACCOUNT_NAME">american express card</annotation>statement balance</sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">what amount is on my<annotation conceptref="ACCOUNT_NAME">platinum card</annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint checking</annotation>
+            </annotation>to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">personal chequing</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">please transfer<annotation conceptref="AMOUNT">thirty five twenty seven</annotation>from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">personal banking</annotation>
+            </annotation>to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">personal chequing</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="TIMEFRAME">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">december</annotation>
+                </annotation>
+            </annotation>'s<annotation conceptref="ACCOUNT_NAME">american express gold card</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">charges</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">find<annotation conceptref="TRANSACTION_TYPE">charges</annotation>in<annotation conceptref="TIMEFRAME">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">february</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">what are my<annotation conceptref="TIMEFRAME">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">october</annotation>
+                </annotation>
+            </annotation>
+            <annotation conceptref="ACCOUNT_NAME">credit card</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">charges</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">look for<annotation conceptref="CATEGORY">cell phone</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">charges</annotation>on my<annotation conceptref="ACCOUNT_NAME">gold card</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">look for<annotation conceptref="CATEGORY">cable</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">charges</annotation>on my<annotation conceptref="ACCOUNT_NAME">silver card</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">look for<annotation conceptref="CATEGORY">restaurant</annotation>transactions</sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">look for<annotation conceptref="CATEGORY">phone</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">charges</annotation>in my<annotation conceptref="ACCOUNT_NAME">personal saving</annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">please transfer<annotation conceptref="AMOUNT">thirty five twenty seven</annotation>from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">personal chequing</annotation>
+            </annotation>to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint checking</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">make a payment of<annotation conceptref="AMOUNT">fifty dollars</annotation>on my<annotation conceptref="PAYEE">cell phone bill</annotation>
+        </sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay<annotation conceptref="PAYEE">mortgage</annotation>from my<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">checking</annotation>
+            </annotation>account</sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay my<annotation conceptref="PAYEE">cable bill</annotation>using my<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint checking</annotation>
+            </annotation>account</sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay my<annotation conceptref="PAYEE">cable bill</annotation>using my<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">main checking</annotation>
+            </annotation>account</sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay my<annotation conceptref="PAYEE">cable bill</annotation>with<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">main saving</annotation>
+            </annotation>account</sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay using<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">checking</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="TIMEFRAME">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">february</annotation>
+                </annotation>
+            </annotation>'s<annotation conceptref="ACCOUNT_NAME">american express platinum card</annotation>transactions</sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">find<annotation conceptref="CATEGORY">tv</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">charges</annotation>in my<annotation conceptref="ACCOUNT_NAME">joint checking</annotation>
+        </sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay off the<annotation conceptref="PAYEE">mobile bills</annotation>
+            <annotation conceptref="AMOUNT">whole</annotation>from my<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">chequing</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">I need information about<annotation conceptref="TRANSACTION_TYPE">withdrawals</annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint checking</annotation>
+            </annotation>to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint checking</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint</annotation>
+            </annotation>to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">main checking</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">main saving</annotation>
+            </annotation>to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint saving</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">personal banking</annotation>
+            </annotation>to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">saving</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_REPORT_FRAUD" count="1" excluded="false" fullyVerified="true">i want to report fraudulent charges</sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">what<annotation conceptref="CATEGORY">restaurant</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">charges</annotation>are on my<annotation conceptref="ACCOUNT_NAME">american express platinum card</annotation>
+        </sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay<annotation conceptref="AMOUNT">eighty five fifty</annotation>of<annotation conceptref="PAYEE">visa card bill</annotation>
+        </sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay<annotation conceptref="PAYEE">loan</annotation>from my<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">main chequing</annotation>
+            </annotation>account</sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">list<annotation conceptref="RECURRENCE">recurring</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">deposits</annotation>to my<annotation conceptref="ACCOUNT_NAME">personal chequing</annotation>account</sample>
+        <sample intentref="NO_INTENT" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="RECURRENCE">not recurring</annotation>
+        </sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay<annotation conceptref="AMOUNT">fifty dollars</annotation>of my<annotation conceptref="PAYEE">video bills</annotation>
+        </sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay<annotation conceptref="AMOUNT">fifty dollars</annotation>towards my<annotation conceptref="PAYEE">video bill</annotation>
+        </sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay<annotation conceptref="PAYEE">loan</annotation>from my<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">personal checking</annotation>
+            </annotation>account</sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">show all my<annotation conceptref="ACCOUNT_NAME">master silver card</annotation>transactions please</sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">show all my<annotation conceptref="ACCOUNT_NAME">master card</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">charges</annotation>please</sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">show my<annotation conceptref="ACCOUNT_NAME">checking</annotation>account transactions please</sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">what's my<annotation conceptref="ACCOUNT_NAME">master silver card</annotation>balance</sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">From<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">checking</annotation>
+            </annotation>account please</sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">From our<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint checking</annotation>
+            </annotation>account</sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">From my<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">savings</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_PAY_BILL" count="2" excluded="false" fullyVerified="true">Yes , pay all my<annotation conceptref="PAYEE">bills</annotation>from<annotation conceptref="REF_THING">that account</annotation>
+        </sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay<annotation conceptref="AMOUNT">twenty dollars</annotation>on<annotation conceptref="PAYEE">visa card</annotation>
+        </sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay<annotation conceptref="AMOUNT">two hundred dollars</annotation>on my<annotation conceptref="PAYEE">jbc card bill</annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">transfer</sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">transfer<annotation conceptref="AMOUNT">one hundred and fifty dollars</annotation>from my<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">personal saving</annotation>
+            </annotation>to to pay my<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">checking</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">transfer<annotation conceptref="AMOUNT">one hundred and fifty dollars</annotation>from my<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">personal saving</annotation>
+            </annotation>to to pay my<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">main checking</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay it on<annotation conceptref="TIMEFRAME">tuesday</annotation>
+        </sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay my<annotation conceptref="PAYEE">visa card bill</annotation>with<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">checking</annotation>
+            </annotation>account</sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay off all of my<annotation conceptref="PAYEE">tv bills</annotation>
+        </sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay off all of my<annotation conceptref="PAYEE">visa card</annotation>
+        </sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay off my<annotation conceptref="PAYEE">jbc card bill</annotation>from my<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint checking</annotation>
+            </annotation>account</sample>
+        <sample intentref="NO_INTENT" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="RECURRENCE">recurring</annotation>ones</sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay<annotation conceptref="AMOUNT">one hundred and fifty dollars</annotation>of my<annotation conceptref="PAYEE">jbc card</annotation>
+        </sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay<annotation conceptref="AMOUNT">one hundred and fifty dollars</annotation>of my<annotation conceptref="PAYEE">platinum card</annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">transfer<annotation conceptref="AMOUNT">thirty five twenty seven</annotation>from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">main chequing</annotation>
+            </annotation>to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint chequing</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">transfer<annotation conceptref="AMOUNT">thirty five twenty seven</annotation>from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">main chequing</annotation>
+            </annotation>to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">main saving</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">transfer<annotation conceptref="AMOUNT">thirty five twenty seven</annotation>from my<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">main chequing</annotation>
+            </annotation>to to pay my<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">main checking</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">saving</annotation>
+            </annotation>to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint checking</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">make a transfer</sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">please set up a transfer</sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">please move<annotation conceptref="AMOUNT">fifty dollars</annotation>from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">personal saving</annotation>
+            </annotation>to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">checking</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">please transfer<annotation conceptref="AMOUNT">thirty five dollars</annotation>from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint</annotation>
+            </annotation>to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint saving</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">please transfer<annotation conceptref="AMOUNT">thirty five dollars</annotation>from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">personal banking</annotation>
+            </annotation>to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint checking</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">please transfer<annotation conceptref="AMOUNT">thirty five dollars</annotation>from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">personal checking</annotation>
+            </annotation>to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">checking</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">please transfer<annotation conceptref="AMOUNT">thirty five dollars</annotation>from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">personal checking</annotation>
+            </annotation>to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">personal saving</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">set up a transfer</sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">transfer between accounts</sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">I want to transfer<annotation conceptref="AMOUNT">eighty five fifty</annotation>from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint saving</annotation>
+            </annotation>to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">saving</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">transfer<annotation conceptref="AMOUNT">one hundred and fifty dollars</annotation>from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">checking</annotation>
+            </annotation>to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">personal checking</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">Need to transfer<annotation conceptref="AMOUNT">two hundred dollars</annotation>from my<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">main checking</annotation>
+            </annotation>to to pay my<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">personal saving</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay<annotation conceptref="AMOUNT">thirty five dollars</annotation>towards<annotation conceptref="PAYEE">landline bills</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="TIMEFRAME">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">may</annotation>
+                </annotation>
+            </annotation>'s<annotation conceptref="ACCOUNT_NAME">visa silver card</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">expenses</annotation>
+        </sample>
+        <sample intentref="I_INQUIRE_MORTGAGE" count="1" excluded="false" fullyVerified="true">Why are rates and apr values different ?</sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">what<annotation conceptref="CATEGORY">dining</annotation>transactions are on my<annotation conceptref="ACCOUNT_NAME">visa card</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">what<annotation conceptref="CATEGORY">dining</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">expenses</annotation>are on my<annotation conceptref="ACCOUNT_NAME">american express card</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_BILL_DUE_DATE" count="1" excluded="false" fullyVerified="true">what is the due date for my<annotation conceptref="PAYEE">jbc card bill</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_BILL_DUE_DATE" count="1" excluded="false" fullyVerified="true">what is the due date for<annotation conceptref="PAYEE">jbc card bill</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_DUE_AMOUNT" count="1" excluded="false" fullyVerified="true">what is<annotation conceptref="PAYEE">platinum card</annotation>due amount</sample>
+        <sample intentref="NO_INTENT" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="ACCOUNT_NAME">american express silver card</annotation>
+        </sample>
+        <sample intentref="NO_INTENT" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="ACCOUNT_NAME">american express</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_DUE_AMOUNT" count="1" excluded="false" fullyVerified="true">what is my<annotation conceptref="PAYEE">visa card</annotation>due amount</sample>
+        <sample intentref="I_REQUEST_DUE_AMOUNT" count="1" excluded="false" fullyVerified="true">what is my<annotation conceptref="PAYEE">tv bills</annotation>due amount</sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">the balance of this account</sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">i need<annotation conceptref="ACCOUNT_NAME">american express silver card</annotation>balance information please</sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="2" excluded="false" fullyVerified="true">how much is my balance on the<annotation conceptref="ACCOUNT_NAME">visa silver card</annotation>
+        </sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay my<annotation conceptref="PAYEE">silver card</annotation>with<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint saving</annotation>
+            </annotation>account</sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">put<annotation conceptref="AMOUNT">fifty dollars</annotation>towards my<annotation conceptref="PAYEE">gas bills</annotation>
+        </sample>
+        <sample intentref="NO_INTENT" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="RECURRENCE">nonrecurring</annotation>ones</sample>
+        <sample intentref="I_REQUEST_SPEAK_TO_AGENT" count="6" excluded="false" fullyVerified="false">i wanna speak to agent</sample>
+        <sample intentref="I_REQUEST_SPEAK_TO_AGENT" count="7" excluded="false" fullyVerified="false">i want to speak to a human being</sample>
+        <sample intentref="I_REQUEST_SPEAK_TO_AGENT" count="7" excluded="false" fullyVerified="false">i wanna speak to a customer service rep</sample>
+        <sample intentref="I_REQUEST_SPEAK_TO_AGENT" count="8" excluded="false" fullyVerified="false">banking associate</sample>
+        <sample intentref="I_REQUEST_SPEAK_TO_AGENT" count="9" excluded="false" fullyVerified="false">i wanna speak to a banker please</sample>
+        <sample intentref="I_REQUEST_SPEAK_TO_AGENT" count="13" excluded="false" fullyVerified="false">wanna speak to customer service</sample>
+        <sample intentref="I_REQUEST_SPEAK_TO_AGENT" count="19" excluded="false" fullyVerified="false">i need to speak to a live person</sample>
+        <sample intentref="I_REQUEST_SPEAK_TO_AGENT" count="21" excluded="false" fullyVerified="false">speak an associate</sample>
+        <sample intentref="I_REQUEST_SPEAK_TO_AGENT" count="21" excluded="false" fullyVerified="false">can i speak with a representative</sample>
+        <sample intentref="I_REQUEST_SPEAK_TO_AGENT" count="25" excluded="false" fullyVerified="false">talk to a customer service agent</sample>
+        <sample intentref="I_REQUEST_SPEAK_TO_AGENT" count="27" excluded="false" fullyVerified="false">talk to a agent</sample>
+        <sample intentref="I_REQUEST_SPEAK_TO_AGENT" count="29" excluded="false" fullyVerified="false">i need to talk to a teller</sample>
+        <sample intentref="I_REQUEST_SPEAK_TO_AGENT" count="170" excluded="false" fullyVerified="false">to speak to an associate</sample>
+        <sample intentref="I_REQUEST_SPEAK_TO_AGENT" count="172" excluded="false" fullyVerified="false">talk to agent</sample>
+        <sample intentref="I_REPORT_LOST_STOLEN_CARD" count="1" excluded="false" fullyVerified="true">I've lost my<annotation conceptref="CARD_TYPE">credit card</annotation>
+        </sample>
+        <sample intentref="I_REPORT_LOST_STOLEN_CARD" count="1" excluded="false" fullyVerified="true">i need a new<annotation conceptref="CARD_TYPE">debit card</annotation>urgently</sample>
+        <sample intentref="I_REPORT_LOST_STOLEN_CARD" count="1" excluded="false" fullyVerified="true">i need a new card immediately</sample>
+        <sample intentref="I_YES_NO" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="YES_NO_custom">
+                <annotation conceptref="YES_NO">
+                    <annotation conceptref="nuance_BOOLEAN">ok</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">what's my<annotation conceptref="ACCOUNT_NAME">personal chequing</annotation>account balance</sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">find<annotation conceptref="CATEGORY">meal</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">charges</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">what's my<annotation conceptref="ACCOUNT_NAME">main checking</annotation>account balance</sample>
+        <sample intentref="I_INQUIRE_MORTGAGE" count="1" excluded="false" fullyVerified="true">I want to know what your rates are</sample>
+        <sample intentref="I_INQUIRE_MORTGAGE" count="1" excluded="false" fullyVerified="true">What mortgage rates do you have available right now ?</sample>
+        <sample intentref="I_INQUIRE_MORTGAGE" count="1" excluded="false" fullyVerified="true">What is the lowest refinancing rate you can offer me ?</sample>
+        <sample intentref="I_INQUIRE_MORTGAGE" count="1" excluded="false" fullyVerified="true">What ' s the lowest refinancing rate you can offer me ?</sample>
+        <sample intentref="I_INQUIRE_MORTGAGE" count="1" excluded="false" fullyVerified="true">What ' s the lowest mortgate rate you can give me ?</sample>
+        <sample intentref="I_INQUIRE_MORTGAGE" count="1" excluded="false" fullyVerified="true">What are today ' s mortgage rates ?</sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">I would like transaction information for my<annotation conceptref="ACCOUNT_NAME">Visa Gold Card</annotation>.</sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="false">transactions</sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="false">recent transactions</sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="false">transaction info</sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="false">transaction information</sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">recent<annotation conceptref="TRANSACTION_TYPE">charges</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">Show me information about a<annotation conceptref="TRANSACTION_TYPE">charge</annotation>made with my<annotation conceptref="ACCOUNT_NAME">Master Card</annotation>at<annotation conceptref="BUSINESS_NAME">Cheesecake Factory</annotation>
+        </sample>
+        <sample intentref="I_REPORT_LOST_STOLEN_CARD" count="1" excluded="false" fullyVerified="true">i lost my<annotation conceptref="CARD_TYPE">debit card</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_NEW_PIN" count="1" excluded="false" fullyVerified="true">can i get a new<annotation conceptref="CARD_TYPE">debit</annotation>card pin number</sample>
+        <sample intentref="I_REQUEST_NEW_PIN" count="1" excluded="false" fullyVerified="true">i forgot my<annotation conceptref="CARD_TYPE">debit</annotation>card code</sample>
+        <sample intentref="I_REQUEST_NEW_PIN" count="1" excluded="false" fullyVerified="true">i can't remember my<annotation conceptref="CARD_TYPE">debit</annotation>card pin</sample>
+        <sample intentref="I_REQUEST_NEW_PIN" count="1" excluded="false" fullyVerified="true">i don't remember my<annotation conceptref="CARD_TYPE">debit</annotation>pin number</sample>
+        <sample intentref="NO_INTENT" count="1" excluded="false" fullyVerified="true">transactions that<annotation conceptref="RECURRENCE">don't recur</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">what are my<annotation conceptref="TIMEFRAME">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">february</annotation>
+                </annotation>
+            </annotation>
+            <annotation conceptref="ACCOUNT_NAME">american express platinum card</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">charges</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">what are my<annotation conceptref="ACCOUNT_NAME">master card</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">charges</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">what are all the<annotation conceptref="TRANSACTION_TYPE">charges</annotation>on my<annotation conceptref="ACCOUNT_NAME">joint checking</annotation>account</sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="ACCOUNT_NAME">platinum card</annotation>balance how much</sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="ACCOUNT_NAME">joint chequing</annotation>account current balance</sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="ACCOUNT_NAME">jbc card</annotation>balance how much</sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">what's my<annotation conceptref="ACCOUNT_NAME">american express silver card</annotation>statement amount</sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay my<annotation conceptref="PAYEE">platinum card</annotation>using my<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">saving</annotation>
+            </annotation>account</sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay my<annotation conceptref="PAYEE">jbc card</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_BILL_DUE_DATE" count="1" excluded="false" fullyVerified="true">when is<annotation conceptref="PAYEE">gas bills</annotation>due</sample>
+        <sample intentref="I_REQUEST_BILL_DUE_DATE" count="1" excluded="false" fullyVerified="true">when is<annotation conceptref="PAYEE">credit card</annotation>due</sample>
+        <sample intentref="I_REQUEST_BILL_DUE_DATE" count="1" excluded="false" fullyVerified="true">when is<annotation conceptref="PAYEE">cell phone bills</annotation>due</sample>
+        <sample intentref="I_REQUEST_BILL_DUE_DATE" count="1" excluded="false" fullyVerified="true">when is<annotation conceptref="PAYEE">cable bills</annotation>due</sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">put<annotation conceptref="AMOUNT">twenty dollars</annotation>towards my<annotation conceptref="PAYEE">visa card</annotation>
+        </sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay<annotation conceptref="AMOUNT">twenty dollars</annotation>on<annotation conceptref="PAYEE">cell phone bills</annotation>
+        </sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay<annotation conceptref="AMOUNT">twenty dollars</annotation>on<annotation conceptref="PAYEE">landline bills</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="ACCOUNT_NAME">joint</annotation>account current balance</sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">current<annotation conceptref="ACCOUNT_NAME">personal banking</annotation>account balance</sample>
+        <sample intentref="I_REQUEST_BILL_DUE_DATE" count="1" excluded="false" fullyVerified="true">when is<annotation conceptref="PAYEE">visa card</annotation>due</sample>
+        <sample intentref="I_INQUIRE_MORTGAGE" count="1" excluded="false" fullyVerified="true">Why is the annual percentage rate different from the interest</sample>
+        <sample intentref="I_REPORT_LOST_STOLEN_CARD" count="1" excluded="false" fullyVerified="true">i lost my<annotation conceptref="CARD_TYPE">debit card</annotation>and i'll need a new one</sample>
+        <sample intentref="I_REPORT_FRAUD" count="1" excluded="false" fullyVerified="true">wait i didn't make all of those</sample>
+        <sample intentref="I_INQUIRE_MORTGAGE" count="1" excluded="false" fullyVerified="true">What is the difference between interest rate and apr ?</sample>
+        <sample intentref="I_INQUIRE_MORTGAGE" count="1" excluded="false" fullyVerified="false">I am trying to find a better refinancing option</sample>
+        <sample intentref="I_INQUIRE_MORTGAGE" count="1" excluded="false" fullyVerified="true">Differences between aprs and interest rates</sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">information about a transaction with<annotation conceptref="BUSINESS_NAME">Amazon</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="ACCOUNT_NAME">silver card</annotation>balance</sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">look for<annotation conceptref="CATEGORY">cable</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">charges</annotation>on my<annotation conceptref="ACCOUNT_NAME">master gold card</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_OPEN_ACCOUNT" count="1" excluded="false" fullyVerified="true">open a new account for me</sample>
+        <sample intentref="I_REPORT_FRAUD" count="1" excluded="false" fullyVerified="false">report fraud</sample>
+        <sample intentref="I_REPORT_FRAUD" count="1" excluded="false" fullyVerified="true">i didn't buy anything here</sample>
+        <sample intentref="I_REPORT_FRAUD" count="1" excluded="false" fullyVerified="true">i didn't buy anything there</sample>
+        <sample intentref="I_REPORT_FRAUD" count="1" excluded="false" fullyVerified="true">report fraudent charge</sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">To my<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">mastercard</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="RECURRENCE">One-time</annotation>payments</sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">Show me<annotation conceptref="RECURRENCE">one-time</annotation>transactions</sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">transfer funds</sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">From<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint savings</annotation>
+            </annotation>please</sample>
+        <sample intentref="I_REQUEST_NEW_PIN" count="1" excluded="false" fullyVerified="true">i forgot my<annotation conceptref="CARD_TYPE">debit</annotation>card pin number</sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">To my<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">checking</annotation>
+            </annotation>account</sample>
+        <sample intentref="I_REQUEST_NEW_PIN" count="1" excluded="false" fullyVerified="true">i've forgotten my<annotation conceptref="CARD_TYPE">debit</annotation>card pin number</sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">is there a balance on my<annotation conceptref="ACCOUNT_NAME">american express silver card</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">is there a balance on my<annotation conceptref="ACCOUNT_NAME">american express gold card</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">i want<annotation conceptref="ACCOUNT_NAME">visa silver card</annotation>balance information</sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">i want<annotation conceptref="ACCOUNT_NAME">credit card</annotation>balance information</sample>
+        <sample intentref="NO_INTENT" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="CARD_TYPE">silver card</annotation>
+        </sample>
+        <sample intentref="NO_INTENT" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="AMOUNT">one hundred and fifty dollars</annotation>
+        </sample>
+        <sample intentref="NO_INTENT" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="ACCOUNT_NAME">master silver card</annotation>
+        </sample>
+        <sample intentref="NO_INTENT" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="ACCOUNT_NAME">master gold card</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">show all my<annotation conceptref="ACCOUNT_NAME">main saving</annotation>account<annotation conceptref="TRANSACTION_TYPE">expenses</annotation>please</sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">I'd like to check the balance of my<annotation conceptref="ACCOUNT_NAME">silver</annotation>account</sample>
+        <sample intentref="I_REQUEST_BILL_DUE_DATE" count="1" excluded="false" fullyVerified="true">what is the due date for<annotation conceptref="PAYEE">phone bill</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_BILL_DUE_DATE" count="1" excluded="false" fullyVerified="true">what is the due date for my<annotation conceptref="PAYEE">video bills</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_BILL_DUE_DATE" count="1" excluded="false" fullyVerified="true">what is the due date for my<annotation conceptref="PAYEE">video bill</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_BILL_DUE_DATE" count="1" excluded="false" fullyVerified="true">what is the due date for my<annotation conceptref="PAYEE">mobile bill</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">what are the<annotation conceptref="ACCOUNT_NAME">master gold card</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">expenses</annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">transfer<annotation conceptref="AMOUNT">$200</annotation>from my<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">gold card</annotation>
+            </annotation>account to my<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">savings account</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_REQUEST_BILL_REASON" count="1" excluded="false" fullyVerified="true">why is my<annotation conceptref="CATEGORY">cell phone bill</annotation>is so high</sample>
+        <sample intentref="I_REQUEST_BILL_REASON" count="1" excluded="false" fullyVerified="true">my<annotation conceptref="CATEGORY">cell phone bill</annotation>is very high why is that</sample>
+        <sample intentref="I_REQUEST_BILL_REASON" count="1" excluded="false" fullyVerified="true">tell me why my<annotation conceptref="CATEGORY">gas bill</annotation>is so high last month</sample>
+        <sample intentref="I_REQUEST_BILL_REASON" count="1" excluded="false" fullyVerified="true">what's the reason for the<annotation conceptref="CATEGORY">cell phone bill</annotation>being so high</sample>
+        <sample intentref="I_REQUEST_BILL_REASON" count="1" excluded="false" fullyVerified="true">what's the reason my<annotation conceptref="CATEGORY">gas bill</annotation>is so high</sample>
+        <sample intentref="I_REQUEST_ETA" count="1" excluded="false" fullyVerified="true">how long would it take by mail</sample>
+        <sample intentref="I_REQUEST_ETA" count="1" excluded="false" fullyVerified="true">how much time does the mail take</sample>
+        <sample intentref="I_REQUEST_ETA" count="1" excluded="false" fullyVerified="true">how much time does it take by mail</sample>
+        <sample intentref="I_REQUEST_ETA" count="1" excluded="false" fullyVerified="true">how long would the mail take</sample>
+        <sample intentref="I_REQUEST_BILL_DUE_DATE" count="1" excluded="false" fullyVerified="true">when is<annotation conceptref="PAYEE">jbc card</annotation>due</sample>
+        <sample intentref="I_REQUEST_BILL_DUE_DATE" count="1" excluded="false" fullyVerified="true">what is the due date for<annotation conceptref="PAYEE">visa card</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_BILL_DUE_DATE" count="1" excluded="false" fullyVerified="true">what is the due date for my<annotation conceptref="PAYEE">tv bills</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_BILL_DUE_DATE" count="1" excluded="false" fullyVerified="true">what is the due date for my<annotation conceptref="PAYEE">platinum card bill</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_DUE_AMOUNT" count="1" excluded="false" fullyVerified="true">what is due on<annotation conceptref="PAYEE">gold card</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">find<annotation conceptref="CATEGORY">cell phone</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">charges</annotation>on my<annotation conceptref="ACCOUNT_NAME">master card</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">how much on my<annotation conceptref="ACCOUNT_NAME">master silver card</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">what are my<annotation conceptref="CATEGORY">restaurant</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">expenses</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">Show me<annotation conceptref="RECURRENCE">non-recurring</annotation>
+            <annotation conceptref="CATEGORY">restaurant</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">charges</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">what<annotation conceptref="CATEGORY">meal</annotation>transactions did i put on my<annotation conceptref="ACCOUNT_NAME">gold card</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">what<annotation conceptref="CATEGORY">meal</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">expenses</annotation>did i put on my<annotation conceptref="ACCOUNT_NAME">jbc card</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">What are my<annotation conceptref="TRANSACTION_TYPE">recurring</annotation>
+            <annotation conceptref="CATEGORY">utility</annotation>transactions</sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">what<annotation conceptref="CATEGORY">dining</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">charges</annotation>did i put on my<annotation conceptref="ACCOUNT_NAME">jbc card</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">list<annotation conceptref="BUSINESS_NAME">cheesecake factory</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">charges</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">did i buy anything from<annotation conceptref="BUSINESS_NAME">costco</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">show me more about my<annotation conceptref="CATEGORY">shopping</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">expenses</annotation>in<annotation conceptref="TIMEFRAME">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">august</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">show me more about my<annotation conceptref="CATEGORY">restaurant</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">expenses</annotation>in<annotation conceptref="TIMEFRAME">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">may</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="TIMEFRAME">last week</annotation>'s<annotation conceptref="ACCOUNT_NAME">visa card</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">charges</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_OPEN_ACCOUNT" count="1" excluded="false" fullyVerified="false">I'd like to open a new account</sample>
+        <sample intentref="I_REQUEST_ETA" count="1" excluded="false" fullyVerified="false">How long before it arrives ?</sample>
+        <sample intentref="I_REQUEST_ETA" count="1" excluded="false" fullyVerified="false">When will it arrive</sample>
+        <sample intentref="I_REQUEST_BILL_DUE_DATE" count="1" excluded="false" fullyVerified="true">when is my<annotation conceptref="PAYEE">phone bill</annotation>due</sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">transfer<annotation conceptref="AMOUNT">twenty dollars</annotation>from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint chequing</annotation>
+            </annotation>to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">main saving</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_REQUEST_BILL_DUE_DATE" count="1" excluded="false" fullyVerified="true">when is<annotation conceptref="PAYEE">video bills</annotation>due</sample>
+        <sample intentref="I_REQUEST_BILL_DUE_DATE" count="1" excluded="false" fullyVerified="true">when is<annotation conceptref="PAYEE">silver card bill</annotation>due</sample>
+        <sample intentref="I_REQUEST_BILL_DUE_DATE" count="1" excluded="false" fullyVerified="true">when is<annotation conceptref="PAYEE">phone bill</annotation>due</sample>
+        <sample intentref="I_REQUEST_SPEAK_TO_AGENT" count="1" excluded="false" fullyVerified="false">Contact live agent</sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">I'd like to transfer the<annotation conceptref="AMOUNT">$490</annotation>from my<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">personal savings</annotation>
+            </annotation>account</sample>
+        <sample intentref="I_YES_NO" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="YES_NO_custom">
+                <annotation conceptref="YES_NO">
+                    <annotation conceptref="nuance_BOOLEAN">No</annotation>
+                </annotation>
+            </annotation>thank you</sample>
+        <sample intentref="I_YES_NO" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="YES_NO_custom">
+                <annotation conceptref="YES_NO">
+                    <annotation conceptref="nuance_BOOLEAN">sure</annotation>
+                </annotation>
+            </annotation>go ahead</sample>
+        <sample intentref="I_YES_NO" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="YES_NO_custom">
+                <annotation conceptref="YES_NO">
+                    <annotation conceptref="nuance_BOOLEAN">No</annotation>
+                </annotation>
+            </annotation>I'm good thanks</sample>
+        <sample intentref="I_YES_NO" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="YES_NO_custom">
+                <annotation conceptref="YES_NO">
+                    <annotation conceptref="nuance_BOOLEAN">No</annotation>
+                </annotation>
+            </annotation>I am good thanks</sample>
+        <sample intentref="I_YES_NO" count="2" excluded="false" fullyVerified="true">
+            <annotation conceptref="YES_NO_custom">
+                <annotation conceptref="YES_NO">
+                    <annotation conceptref="nuance_BOOLEAN">that's right</annotation>
+                </annotation>
+            </annotation>that wasn't me</sample>
+        <sample intentref="I_YES_NO" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="YES_NO_custom">
+                <annotation conceptref="YES_NO">
+                    <annotation conceptref="nuance_BOOLEAN">no</annotation>
+                </annotation>
+            </annotation>goodbye</sample>
+        <sample intentref="I_YES_NO" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="YES_NO_custom">
+                <annotation conceptref="YES_NO">
+                    <annotation conceptref="nuance_BOOLEAN">no</annotation>
+                </annotation>
+            </annotation>thank you</sample>
+        <sample intentref="I_YES_NO" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="YES_NO_custom">
+                <annotation conceptref="YES_NO">
+                    <annotation conceptref="nuance_BOOLEAN">no</annotation>
+                </annotation>
+            </annotation>thanks</sample>
+        <sample intentref="I_YES_NO" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="YES_NO_custom">
+                <annotation conceptref="YES_NO">
+                    <annotation conceptref="nuance_BOOLEAN">yes</annotation>
+                </annotation>
+            </annotation>thanks</sample>
+        <sample intentref="I_YES_NO" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="YES_NO_custom">
+                <annotation conceptref="YES_NO">
+                    <annotation conceptref="nuance_BOOLEAN">yes</annotation>
+                </annotation>
+            </annotation>let's do that</sample>
+        <sample intentref="I_YES_NO" count="1" excluded="false" fullyVerified="true">thanks but<annotation conceptref="YES_NO_custom">
+                <annotation conceptref="YES_NO">
+                    <annotation conceptref="nuance_BOOLEAN">no</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_YES_NO" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="YES_NO_custom">
+                <annotation conceptref="YES_NO">
+                    <annotation conceptref="nuance_BOOLEAN">no</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_YES_NO" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="YES_NO_custom">
+                <annotation conceptref="YES_NO">
+                    <annotation conceptref="nuance_BOOLEAN">sure</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">I'd like to transfer it to my<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">Visa card</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">I would like to transfer it from my<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">credit card</annotation>
+            </annotation>to my<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">solo checking</annotation>
+            </annotation>account</sample>
+        <sample intentref="NO_INTENT" count="1" excluded="false" fullyVerified="true">My<annotation conceptref="ACCOUNT_NAME">MasterCard</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">find<annotation conceptref="CATEGORY">gas</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">charges</annotation>on<annotation conceptref="ACCOUNT_NAME">all</annotation>accounts</sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">transfer<annotation conceptref="AMOUNT">$450</annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">transfer<annotation conceptref="AMOUNT">one hundred dollars</annotation>please</sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">I'd like to transfer<annotation conceptref="AMOUNT">$900</annotation>
+        </sample>
+        <sample intentref="I_REPORT_LOST_STOLEN_CARD" count="1" excluded="false" fullyVerified="false">new card</sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">transactions<annotation conceptref="TIMEFRAME">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">yesterday</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">transactions<annotation conceptref="TIMEFRAME">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">one week ago</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="TIMEFRAME">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">may 15th</annotation>
+                </annotation>
+            </annotation>transactions</sample>
+        <sample intentref="I_REQUEST_BILL_DUE_DATE" count="1" excluded="false" fullyVerified="true">when is my<annotation conceptref="PAYEE">video bills</annotation>due</sample>
+        <sample intentref="I_REQUEST_BILL_DUE_DATE" count="1" excluded="false" fullyVerified="true">when is my<annotation conceptref="PAYEE">silver card bill</annotation>due</sample>
+        <sample intentref="NO_INTENT" count="1" excluded="false" fullyVerified="true">A<annotation conceptref="CARD_TYPE">mastercard</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_BILL_DUE_DATE" count="1" excluded="false" fullyVerified="true">when is my<annotation conceptref="PAYEE">master card</annotation>due</sample>
+        <sample intentref="I_REQUEST_BILL_DUE_DATE" count="1" excluded="false" fullyVerified="true">when is my<annotation conceptref="PAYEE">landline bill</annotation>due</sample>
+        <sample intentref="I_REQUEST_BILL_DUE_DATE" count="1" excluded="false" fullyVerified="true">when is my<annotation conceptref="PAYEE">gold card</annotation>due</sample>
+        <sample intentref="I_REQUEST_BILL_DUE_DATE" count="1" excluded="false" fullyVerified="true">when is my<annotation conceptref="PAYEE">gold card bill</annotation>due</sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="ACCOUNT_NAME">visa card</annotation>transactions</sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">transfer<annotation conceptref="AMOUNT">eighty five fifty</annotation>from my<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint chequing</annotation>
+            </annotation>to to pay my<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint checking</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">transfer<annotation conceptref="AMOUNT">eighty five fifty</annotation>from my<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint chequing</annotation>
+            </annotation>to to pay my<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">main checking</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">transfer<annotation conceptref="AMOUNT">one hundred and fifty dollars</annotation>from my<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">main saving</annotation>
+            </annotation>to to pay my<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">main chequing</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">transfer<annotation conceptref="AMOUNT">twenty dollars</annotation>from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint chequing</annotation>
+            </annotation>to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">personal checking</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">transfer<annotation conceptref="AMOUNT">twenty dollars</annotation>from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">personal chequing</annotation>
+            </annotation>to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">personal checking</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">transfer<annotation conceptref="AMOUNT">twenty dollars</annotation>from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">personal chequing</annotation>
+            </annotation>to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">personal saving</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">transfer<annotation conceptref="AMOUNT">two hundred dollars</annotation>from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">main chequing</annotation>
+            </annotation>to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint chequing</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">transfer<annotation conceptref="AMOUNT">two hundred dollars</annotation>from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">main chequing</annotation>
+            </annotation>to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">main saving</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="ACCOUNT_NAME">jbc card</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">expenses</annotation>in<annotation conceptref="TIMEFRAME">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">october</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="ACCOUNT_NAME">credit card</annotation>balance how much</sample>
+        <sample intentref="NO_INTENT" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="AMOUNT">two hundred dollars</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">is there a balance on my<annotation conceptref="ACCOUNT_NAME">visa platinum card</annotation>
+        </sample>
+        <sample intentref="I_YES_NO" count="2" excluded="false" fullyVerified="true">good idea<annotation conceptref="YES_NO_custom">
+                <annotation conceptref="YES_NO">
+                    <annotation conceptref="nuance_BOOLEAN">let's do that</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_YES_NO" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="YES_NO_custom">
+                <annotation conceptref="YES_NO">
+                    <annotation conceptref="nuance_BOOLEAN">yes</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_YES_NO" count="1" excluded="false" fullyVerified="true">that's<annotation conceptref="YES_NO_custom">
+                <annotation conceptref="YES_NO">
+                    <annotation conceptref="nuance_BOOLEAN">true</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_YES_NO" count="1" excluded="false" fullyVerified="true">can we do it<annotation conceptref="YES_NO_custom">
+                <annotation conceptref="YES_NO">
+                    <annotation conceptref="nuance_BOOLEAN">later</annotation>
+                </annotation>
+            </annotation>please</sample>
+        <sample intentref="I_YES_NO" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="YES_NO_custom">
+                <annotation conceptref="YES_NO">
+                    <annotation conceptref="nuance_BOOLEAN">not now</annotation>
+                </annotation>
+            </annotation>maybe soon</sample>
+        <sample intentref="I_YES_NO" count="1" excluded="false" fullyVerified="true">i<annotation conceptref="YES_NO_custom">
+                <annotation conceptref="YES_NO">
+                    <annotation conceptref="nuance_BOOLEAN">don't want</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_YES_NO" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="YES_NO_custom">
+                <annotation conceptref="YES_NO">
+                    <annotation conceptref="nuance_BOOLEAN">not that i know of</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_YES_NO" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="YES_NO_custom">
+                <annotation conceptref="YES_NO">
+                    <annotation conceptref="nuance_BOOLEAN">no</annotation>
+                </annotation>
+            </annotation>i am good for this week bye</sample>
+        <sample intentref="I_YES_NO" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="YES_NO_custom">
+                <annotation conceptref="YES_NO">
+                    <annotation conceptref="nuance_BOOLEAN">no</annotation>
+                </annotation>
+            </annotation>i am good for now bye</sample>
+        <sample intentref="I_INQUIRE_BRANCH_LOCATION" count="1" excluded="false" fullyVerified="true">can you tell me where the nearest branch is</sample>
+        <sample intentref="I_INQUIRE_BRANCH_LOCATION" count="1" excluded="false" fullyVerified="true">where is the closest branch</sample>
+        <sample intentref="I_REQUEST_BILL_REASON" count="1" excluded="false" fullyVerified="true">i'm really surprised how high the<annotation conceptref="CATEGORY">cell phone bill</annotation>is</sample>
+        <sample intentref="I_REQUEST_ETA" count="2" excluded="false" fullyVerified="true">how long will it take to arrive</sample>
+        <sample intentref="I_REQUEST_ETA" count="1" excluded="false" fullyVerified="true">how long will it take</sample>
+        <sample intentref="I_GOODBYE" count="1" excluded="false" fullyVerified="false">Good evening</sample>
+        <sample intentref="I_GOODBYE" count="1" excluded="false" fullyVerified="false">Good night</sample>
+        <sample intentref="I_GOODBYE" count="1" excluded="false" fullyVerified="false">I don't want any help</sample>
+        <sample intentref="I_GOODBYE" count="1" excluded="false" fullyVerified="false">Nothing</sample>
+        <sample intentref="I_GOODBYE" count="1" excluded="false" fullyVerified="false">Forget it</sample>
+        <sample intentref="I_GOODBYE" count="1" excluded="false" fullyVerified="false">All done</sample>
+        <sample intentref="I_GOODBYE" count="1" excluded="false" fullyVerified="false">Bye</sample>
+        <sample intentref="I_GOODBYE" count="1" excluded="false" fullyVerified="false">Good bye</sample>
+        <sample intentref="I_GOODBYE" count="1" excluded="false" fullyVerified="false">Goodbye</sample>
+        <sample intentref="I_REPORT_LOST_STOLEN_CARD" count="1" excluded="false" fullyVerified="false">my card was stolen</sample>
+        <sample intentref="I_REPORT_LOST_STOLEN_CARD" count="1" excluded="false" fullyVerified="false">stolen card</sample>
+        <sample intentref="I_REPORT_LOST_STOLEN_CARD" count="1" excluded="false" fullyVerified="false">lost a card</sample>
+        <sample intentref="I_REPORT_LOST_STOLEN_CARD" count="1" excluded="false" fullyVerified="false">lost my card</sample>
+        <sample intentref="I_REPORT_LOST_STOLEN_CARD" count="1" excluded="false" fullyVerified="true">I need to request a new<annotation conceptref="CARD_TYPE">Mastercard</annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">I need to transfer<annotation conceptref="AMOUNT">twenty dollars</annotation>from my<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint checking</annotation>
+            </annotation>to to pay my<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">personal checking</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">check my<annotation conceptref="ACCOUNT_NAME">american express</annotation>balance</sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">please tell me how much balance i have on my<annotation conceptref="ACCOUNT_NAME">visa gold card</annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">transfer<annotation conceptref="AMOUNT">300 dollars</annotation>from my<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">checking</annotation>
+            </annotation>account to my<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">saving</annotation>
+            </annotation>account</sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">please transfer<annotation conceptref="AMOUNT">100 dollars</annotation>from my<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">solo checking</annotation>
+            </annotation>account to the<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">vacation saving</annotation>
+            </annotation>account</sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">ok , let's transfer<annotation conceptref="AMOUNT">$800</annotation>to my<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">main saving</annotation>
+            </annotation>account</sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">use my<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint chequing</annotation>
+            </annotation>to pay my<annotation conceptref="PAYEE">silver card</annotation>
+        </sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">use my<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint saving</annotation>
+            </annotation>to pay my<annotation conceptref="PAYEE">tv bills</annotation>
+        </sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">use my<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">main saving</annotation>
+            </annotation>to pay my<annotation conceptref="PAYEE">platinum card</annotation>
+        </sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">use my<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">main saving</annotation>
+            </annotation>to pay my<annotation conceptref="PAYEE">platinum card bill</annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">please transfer<annotation conceptref="AMOUNT">$200</annotation>from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">checking</annotation>
+            </annotation>account to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">saving</annotation>
+            </annotation>account</sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="AMOUNT">four hundred dollars</annotation>to my<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">vacation savings</annotation>
+            </annotation>account</sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">transfer<annotation conceptref="AMOUNT">thirty five dollars</annotation>from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint checking</annotation>
+            </annotation>to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint checking</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">transfer<annotation conceptref="AMOUNT">thirty five dollars</annotation>from my<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint checking</annotation>
+            </annotation>to to pay my<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint checking</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">transfer<annotation conceptref="AMOUNT">thirty five twenty seven</annotation>from my<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint saving</annotation>
+            </annotation>to to pay my<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">i want my<annotation conceptref="ACCOUNT_NAME">jbc card</annotation>transactions please</sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">i want my<annotation conceptref="ACCOUNT_NAME">american express platinum card</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">expenses</annotation>please</sample>
+        <sample intentref="NO_INTENT" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="ACCOUNT_NAME">master card</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">how much do i have on my<annotation conceptref="ACCOUNT_NAME">master gold card</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">how much do i have on my<annotation conceptref="ACCOUNT_NAME">master card</annotation>
+        </sample>
+        <sample intentref="I_REPORT_FRAUD" count="1" excluded="false" fullyVerified="true">i want to report illegal charges</sample>
+        <sample intentref="I_REPORT_FRAUD" count="1" excluded="false" fullyVerified="true">i want to report fraud</sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay<annotation conceptref="AMOUNT">two hundred dollars</annotation>on my<annotation conceptref="PAYEE">credit card bill</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">how much do i owe</sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">transfer<annotation conceptref="AMOUNT">thirty five dollars</annotation>from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint chequing</annotation>
+            </annotation>to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">main checking</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">transfer<annotation conceptref="AMOUNT">thirty five dollars</annotation>from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint chequing</annotation>
+            </annotation>to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">main chequing</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">transfer<annotation conceptref="AMOUNT">thirty five dollars</annotation>from my<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint checking</annotation>
+            </annotation>to to pay my<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">personal chequing</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">transfer<annotation conceptref="AMOUNT">thirty five dollars</annotation>from my<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">main saving</annotation>
+            </annotation>to to pay my<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">chequing</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">transfer<annotation conceptref="AMOUNT">thirty five dollars</annotation>from my<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">main saving</annotation>
+            </annotation>to to pay my<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">personal chequing</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_REPORT_LOST_STOLEN_CARD" count="1" excluded="false" fullyVerified="true">i need a new card quickly</sample>
+        <sample intentref="I_REPORT_LOST_STOLEN_CARD" count="1" excluded="false" fullyVerified="true">can i quickly get a new<annotation conceptref="CARD_TYPE">debit card</annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">from the<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">saving</annotation>
+            </annotation>account transfer<annotation conceptref="AMOUNT">one hundred dollars</annotation>to the<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint checking</annotation>
+            </annotation>account</sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">what is the amount on my<annotation conceptref="ACCOUNT_NAME">credit card</annotation>statement</sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay<annotation conceptref="AMOUNT">300</annotation>on my<annotation conceptref="PAYEE">gold card</annotation>
+        </sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">make a payment of<annotation conceptref="AMOUNT">eighty five fifty</annotation>on my<annotation conceptref="PAYEE">credit card</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">what are my<annotation conceptref="ACCOUNT_NAME">platinum card</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">charges</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">find<annotation conceptref="TRANSACTION_TYPE">charges</annotation>in<annotation conceptref="TIMEFRAME">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">september</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">find<annotation conceptref="CATEGORY">cell phone</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">charges</annotation>on my<annotation conceptref="ACCOUNT_NAME">american express card</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">find all<annotation conceptref="CATEGORY">meal</annotation>transactions on my<annotation conceptref="ACCOUNT_NAME">american express card</annotation>
+        </sample>
+        <sample intentref="I_REPORT_FRAUD" count="1" excluded="false" fullyVerified="true">report fraudulent charges</sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">what's the amount on my<annotation conceptref="ACCOUNT_NAME">silver</annotation>account</sample>
+        <sample intentref="I_REQUEST_ETA" count="1" excluded="false" fullyVerified="true">how long does it take</sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">look for<annotation conceptref="CATEGORY">cable</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">charges</annotation>on my<annotation conceptref="ACCOUNT_NAME">visa silver card</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">look for<annotation conceptref="CATEGORY">phone</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">charges</annotation>on my<annotation conceptref="ACCOUNT_NAME">american express silver card</annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">please transfer<annotation conceptref="AMOUNT">thirty five dollars</annotation>from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">personal banking</annotation>
+            </annotation>to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">personal chequing</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">put<annotation conceptref="AMOUNT">twenty dollars</annotation>towards my<annotation conceptref="PAYEE">tv bill</annotation>
+        </sample>
+        <sample intentref="I_YES_NO" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="YES_NO_custom">
+                <annotation conceptref="YES_NO">
+                    <annotation conceptref="nuance_BOOLEAN">yes</annotation>
+                </annotation>
+            </annotation>please</sample>
+        <sample intentref="I_YES_NO" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="YES_NO_custom">
+                <annotation conceptref="YES_NO">
+                    <annotation conceptref="nuance_BOOLEAN">yes</annotation>
+                </annotation>
+            </annotation>that's right</sample>
+        <sample intentref="I_YES_NO" count="1" excluded="false" fullyVerified="true">that is<annotation conceptref="YES_NO_custom">
+                <annotation conceptref="YES_NO">
+                    <annotation conceptref="nuance_BOOLEAN">right</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_YES_NO" count="1" excluded="false" fullyVerified="true">that is<annotation conceptref="YES_NO_custom">
+                <annotation conceptref="YES_NO">
+                    <annotation conceptref="nuance_BOOLEAN">correct</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_YES_NO" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="YES_NO_custom">
+                <annotation conceptref="YES_NO">
+                    <annotation conceptref="nuance_BOOLEAN">right</annotation>
+                </annotation>
+            </annotation>that's correct</sample>
+        <sample intentref="I_YES_NO" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="YES_NO_custom">
+                <annotation conceptref="YES_NO">
+                    <annotation conceptref="nuance_BOOLEAN">yes</annotation>
+                </annotation>
+            </annotation>that's correct</sample>
+        <sample intentref="NO_INTENT" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="RECURRENCE">non-recurring</annotation>
+        </sample>
+        <sample intentref="NO_INTENT" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="RECURRENCE">non-recurring</annotation>ones</sample>
+        <sample intentref="NO_INTENT" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="RECURRENCE">nonrecurring</annotation>
+        </sample>
+        <sample intentref="NO_INTENT" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="RECURRENCE">recurring</annotation>transactions</sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">what<annotation conceptref="RECURRENCE">repeating</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">payments</annotation>do i have</sample>
+        <sample intentref="I_REQUEST_OPEN_ACCOUNT" count="1" excluded="false" fullyVerified="true">New<annotation conceptref="ACCOUNT_NAME">checking</annotation>account please</sample>
+        <sample intentref="I_REQUEST_OPEN_ACCOUNT" count="1" excluded="false" fullyVerified="true">Open new<annotation conceptref="ACCOUNT_NAME">savings</annotation>account please</sample>
+        <sample intentref="I_REQUEST_OPEN_ACCOUNT" count="1" excluded="false" fullyVerified="false">Open new account please</sample>
+        <sample intentref="I_REQUEST_OPEN_ACCOUNT" count="1" excluded="false" fullyVerified="false">New account please</sample>
+        <sample intentref="I_REQUEST_OPEN_ACCOUNT" count="1" excluded="false" fullyVerified="false">New account</sample>
+        <sample intentref="I_REQUEST_OPEN_ACCOUNT" count="1" excluded="false" fullyVerified="false">Open new account</sample>
+        <sample intentref="NO_INTENT" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="AMOUNT">fifty dollars</annotation>
+        </sample>
+        <sample intentref="NO_INTENT" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="AMOUNT">eighty five fifty</annotation>
+        </sample>
+        <sample intentref="NO_INTENT" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="ACCOUNT_NAME">credit card</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">find all<annotation conceptref="CATEGORY">meal</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">charges</annotation>on my<annotation conceptref="ACCOUNT_NAME">master card</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_DUE_AMOUNT" count="1" excluded="false" fullyVerified="true">what is<annotation conceptref="PAYEE">mobile bill</annotation>due amount</sample>
+        <sample intentref="I_REQUEST_DUE_AMOUNT" count="1" excluded="false" fullyVerified="true">what is<annotation conceptref="PAYEE">master card</annotation>due amount</sample>
+        <sample intentref="I_REQUEST_DUE_AMOUNT" count="1" excluded="false" fullyVerified="true">what is<annotation conceptref="PAYEE">master card bill</annotation>due amount</sample>
+        <sample intentref="I_REQUEST_DUE_AMOUNT" count="1" excluded="false" fullyVerified="true">what is due on<annotation conceptref="PAYEE">silver card</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_DUE_AMOUNT" count="1" excluded="false" fullyVerified="true">what is due on<annotation conceptref="PAYEE">phone bills</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_DUE_AMOUNT" count="1" excluded="false" fullyVerified="true">what is due on my<annotation conceptref="PAYEE">video bill</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_DUE_AMOUNT" count="1" excluded="false" fullyVerified="true">what is due on my<annotation conceptref="PAYEE">silver card bill</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_DUE_AMOUNT" count="1" excluded="false" fullyVerified="true">what is due on my<annotation conceptref="PAYEE">phone bill</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_DUE_AMOUNT" count="1" excluded="false" fullyVerified="true">what is due on my<annotation conceptref="PAYEE">master card bill</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_DUE_AMOUNT" count="1" excluded="false" fullyVerified="true">what is due on my<annotation conceptref="PAYEE">landline bill</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_DUE_AMOUNT" count="1" excluded="false" fullyVerified="true">what is due on my<annotation conceptref="PAYEE">gold card bill</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_DUE_AMOUNT" count="1" excluded="false" fullyVerified="true">what is due on my<annotation conceptref="PAYEE">gold card</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_DUE_AMOUNT" count="1" excluded="false" fullyVerified="true">what is due on my<annotation conceptref="PAYEE">gas bills</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_DUE_AMOUNT" count="1" excluded="false" fullyVerified="true">what is due on my<annotation conceptref="PAYEE">credit card bill</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_DUE_AMOUNT" count="1" excluded="false" fullyVerified="true">what is due on my<annotation conceptref="PAYEE">cell phone bills</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_DUE_AMOUNT" count="1" excluded="false" fullyVerified="true">what is due on my<annotation conceptref="PAYEE">cable bill</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_DUE_AMOUNT" count="1" excluded="false" fullyVerified="true">what is due on<annotation conceptref="PAYEE">master card</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_DUE_AMOUNT" count="1" excluded="false" fullyVerified="true">what is due on<annotation conceptref="PAYEE">gold card bill</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_DUE_AMOUNT" count="1" excluded="false" fullyVerified="true">what is due on<annotation conceptref="PAYEE">gas bills</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_DUE_AMOUNT" count="1" excluded="false" fullyVerified="true">what is due on<annotation conceptref="PAYEE">cell phone bill</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">check my<annotation conceptref="ACCOUNT_NAME">master silver card</annotation>amount</sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">what is my<annotation conceptref="ACCOUNT_NAME">gold card</annotation>statement balance</sample>
+        <sample intentref="I_INQUIRE_MORTGAGE" count="1" excluded="false" fullyVerified="true">Yes , I do . And with the lower rates , I ' m trying to find out a better refinancing option</sample>
+        <sample intentref="I_INQUIRE_MORTGAGE" count="1" excluded="false" fullyVerified="false">Yes I do and with the lower rates I am trying to find out a better refinancing option</sample>
+        <sample intentref="NO_INTENT" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="TIMEFRAME">today</annotation>
+        </sample>
+        <sample intentref="I_REPORT_LOST_STOLEN_CARD" count="1" excluded="false" fullyVerified="true">can i get a new<annotation conceptref="CARD_TYPE">debit card</annotation>
+        </sample>
+        <sample intentref="I_REPORT_LOST_STOLEN_CARD" count="1" excluded="false" fullyVerified="true">i lost my<annotation conceptref="CARD_TYPE">debit card</annotation>and need a replacement</sample>
+        <sample intentref="I_REPORT_LOST_STOLEN_CARD" count="1" excluded="false" fullyVerified="true">i need a replacement<annotation conceptref="CARD_TYPE">debit card</annotation>
+        </sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay my<annotation conceptref="PAYEE">mobile bills</annotation>
+        </sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay my<annotation conceptref="PAYEE">master card bill</annotation>with<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint</annotation>
+            </annotation>account</sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">put<annotation conceptref="AMOUNT">five hundred dollars</annotation>towards my<annotation conceptref="PAYEE">credit card</annotation>
+        </sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay off my<annotation conceptref="PAYEE">mobile bill</annotation>
+            <annotation conceptref="AMOUNT">in full</annotation>
+        </sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay off my<annotation conceptref="PAYEE">mobile bill</annotation>using my<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">checking</annotation>
+            </annotation>account</sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay off my<annotation conceptref="PAYEE">mobile bills</annotation>
+            <annotation conceptref="AMOUNT">in full</annotation>
+        </sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">use my<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">personal saving</annotation>
+            </annotation>to pay my<annotation conceptref="PAYEE">credit card</annotation>
+        </sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">put<annotation conceptref="AMOUNT">one hundred and fifty dollars</annotation>towards my<annotation conceptref="PAYEE">phone bill</annotation>
+        </sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">put<annotation conceptref="AMOUNT">thirty five twenty seven</annotation>towards my<annotation conceptref="PAYEE">silver card</annotation>
+        </sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">put<annotation conceptref="AMOUNT">twenty dollars</annotation>towards my<annotation conceptref="PAYEE">silver card bill</annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">from my<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">saving</annotation>
+            </annotation>account transfer<annotation conceptref="AMOUNT">one thousand dollars</annotation>to my<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">solo checking</annotation>
+            </annotation>account</sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">saving</annotation>
+            </annotation>account transfer<annotation conceptref="AMOUNT">two thousand dollars</annotation>to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">checking</annotation>
+            </annotation>account</sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="TIMEFRAME">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">march</annotation>
+                </annotation>
+            </annotation>
+            <annotation conceptref="ACCOUNT_NAME">visa card</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">expenses</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">look for<annotation conceptref="CATEGORY">video</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">charges</annotation>in my<annotation conceptref="ACCOUNT_NAME">personal chequing</annotation>
+        </sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay off my<annotation conceptref="PAYEE">silver card bill</annotation>using my<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">personal banking</annotation>
+            </annotation>account</sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay off my<annotation conceptref="PAYEE">silver card bill</annotation>with<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">main saving</annotation>
+            </annotation>account</sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay off the<annotation conceptref="PAYEE">credit card</annotation>
+            <annotation conceptref="AMOUNT">whole</annotation>from my<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">saving</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">what do i owe on my<annotation conceptref="ACCOUNT_NAME">american express</annotation>
+        </sample>
+        <sample intentref="I_REPORT_FRAUD" count="1" excluded="false" fullyVerified="true">wait i didn't make those charges</sample>
+        <sample intentref="I_REPORT_LOST_STOLEN_CARD" count="1" excluded="false" fullyVerified="true">someone stole my card</sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">show<annotation conceptref="CATEGORY">dining</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">charges</annotation>details</sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">make a payment of<annotation conceptref="AMOUNT">thirty five twenty seven</annotation>on my<annotation conceptref="PAYEE">gold card</annotation>
+        </sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay<annotation conceptref="AMOUNT">eighty five fifty</annotation>on my<annotation conceptref="PAYEE">silver card bill</annotation>
+        </sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay<annotation conceptref="AMOUNT">fifty dollars</annotation>of my<annotation conceptref="PAYEE">silver card bill</annotation>
+        </sample>
+        <sample intentref="I_YES_NO" count="1" excluded="false" fullyVerified="true">that's<annotation conceptref="YES_NO_custom">
+                <annotation conceptref="YES_NO">
+                    <annotation conceptref="nuance_BOOLEAN">correct</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_ADD_PAYEE" count="1" excluded="false" fullyVerified="true">Add<annotation conceptref="BUSINESS_NAME">Nordstrom</annotation>as a new payee</sample>
+        <sample intentref="I_ADD_PAYEE" count="1" excluded="false" fullyVerified="false">Add a new payee</sample>
+        <sample intentref="I_REQUEST_BILL_REASON" count="1" excluded="false" fullyVerified="true">can you tell me why my<annotation conceptref="CATEGORY">cell phone bill</annotation>is so high</sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">transfer<annotation conceptref="AMOUNT">two thousand five hundred dollars</annotation>to my<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">savings</annotation>
+            </annotation>account</sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint</annotation>
+            </annotation>to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">checking</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint</annotation>
+            </annotation>to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint checking</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">transaction information for my<annotation conceptref="ACCOUNT_NAME">vacation savings</annotation>account</sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">information about a<annotation conceptref="CATEGORY">medical</annotation>transaction</sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="false">information about my transactions</sample>
+        <sample intentref="I_TRANSFER_FUNDS" count="1" excluded="false" fullyVerified="true">from<annotation conceptref="FROM_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">personal checking</annotation>
+            </annotation>to<annotation conceptref="TO_ACCOUNT">
+                <annotation conceptref="ACCOUNT_NAME">joint</annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">what's the balance in my<annotation conceptref="ACCOUNT_NAME">joint</annotation>account</sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">what's my<annotation conceptref="ACCOUNT_NAME">silver card</annotation>balance</sample>
+        <sample intentref="NO_INTENT" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="AMOUNT">thirty five dollars</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">all<annotation conceptref="RECURRENCE">recurring</annotation>transactions</sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="TRANSACTION_TYPE">charges</annotation>from<annotation conceptref="BUSINESS_NAME">costco</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">how much on my<annotation conceptref="ACCOUNT_NAME">visa silver card</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">i'm calling about my<annotation conceptref="ACCOUNT_NAME">credit card</annotation>balance</sample>
+        <sample intentref="I_INQUIRE_BRANCH_LOCATION" count="1" excluded="false" fullyVerified="true">i will go to the bank</sample>
+        <sample intentref="I_INQUIRE_BRANCH_LOCATION" count="1" excluded="false" fullyVerified="true">i will go to a branch</sample>
+        <sample intentref="I_REQUEST_BILL_DUE_DATE" count="1" excluded="false" fullyVerified="true">what is the due date for<annotation conceptref="PAYEE">landline bills</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_BILL_DUE_DATE" count="1" excluded="false" fullyVerified="true">what is the due date for<annotation conceptref="PAYEE">landline bill</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_BILL_DUE_DATE" count="1" excluded="false" fullyVerified="true">what is the due date for<annotation conceptref="PAYEE">gold card</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_BILL_DUE_DATE" count="1" excluded="false" fullyVerified="true">what is the due date for<annotation conceptref="PAYEE">gas bill</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_BILL_DUE_DATE" count="1" excluded="false" fullyVerified="true">what is the due date for<annotation conceptref="PAYEE">cable bill</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_DUE_AMOUNT" count="1" excluded="false" fullyVerified="true">what is<annotation conceptref="PAYEE">video bill</annotation>due amount</sample>
+        <sample intentref="I_REQUEST_DUE_AMOUNT" count="1" excluded="false" fullyVerified="true">what is<annotation conceptref="PAYEE">silver card bill</annotation>due amount</sample>
+        <sample intentref="I_REQUEST_DUE_AMOUNT" count="1" excluded="false" fullyVerified="true">what is my<annotation conceptref="PAYEE">master card</annotation>due amount</sample>
+        <sample intentref="I_REQUEST_DUE_AMOUNT" count="1" excluded="false" fullyVerified="true">what is my<annotation conceptref="PAYEE">landline bills</annotation>due amount</sample>
+        <sample intentref="I_REQUEST_DUE_AMOUNT" count="1" excluded="false" fullyVerified="true">what is my<annotation conceptref="PAYEE">landline bill</annotation>due amount</sample>
+        <sample intentref="I_REQUEST_DUE_AMOUNT" count="1" excluded="false" fullyVerified="true">what is my<annotation conceptref="PAYEE">gas bills</annotation>due amount</sample>
+        <sample intentref="I_REQUEST_DUE_AMOUNT" count="1" excluded="false" fullyVerified="true">what is my<annotation conceptref="PAYEE">gas bill</annotation>due amount</sample>
+        <sample intentref="I_REQUEST_DUE_AMOUNT" count="1" excluded="false" fullyVerified="true">what is my<annotation conceptref="PAYEE">credit card</annotation>due amount</sample>
+        <sample intentref="I_REQUEST_DUE_AMOUNT" count="1" excluded="false" fullyVerified="true">what is my<annotation conceptref="PAYEE">credit card bill</annotation>due amount</sample>
+        <sample intentref="I_REQUEST_DUE_AMOUNT" count="1" excluded="false" fullyVerified="true">what is my<annotation conceptref="PAYEE">cell phone bill</annotation>due amount</sample>
+        <sample intentref="NO_INTENT" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="ACCOUNT_NAME">visa platinum card</annotation>
+        </sample>
+        <sample intentref="NO_INTENT" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="ACCOUNT_NAME">visa gold card</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">show all my<annotation conceptref="ACCOUNT_NAME">chequing</annotation>account<annotation conceptref="TRANSACTION_TYPE">expenses</annotation>please</sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay<annotation conceptref="AMOUNT">thirty five dollars</annotation>towards my<annotation conceptref="PAYEE">platinum card</annotation>
+        </sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay<annotation conceptref="AMOUNT">twenty dollars</annotation>of my<annotation conceptref="PAYEE">visa card bill</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">what<annotation conceptref="CATEGORY">grocery</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">expenses</annotation>do i have in<annotation conceptref="TIMEFRAME">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">february</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_INQUIRE_MORTGAGE" count="1" excluded="false" fullyVerified="true">Can I take advantage of the lower rates for my home ?</sample>
+        <sample intentref="I_INQUIRE_BRANCH_LOCATION" count="1" excluded="false" fullyVerified="false">bank near me</sample>
+        <sample intentref="I_INQUIRE_BRANCH_LOCATION" count="1" excluded="false" fullyVerified="false">where's the closest bank</sample>
+        <sample intentref="I_INQUIRE_BRANCH_LOCATION" count="1" excluded="false" fullyVerified="false">where's the closest branch</sample>
+        <sample intentref="I_INQUIRE_BRANCH_LOCATION" count="1" excluded="false" fullyVerified="false">find branch near me</sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">find<annotation conceptref="TRANSACTION_TYPE">charges</annotation>in<annotation conceptref="TIMEFRAME">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">june</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_REPORT_LOST_STOLEN_CARD" count="1" excluded="false" fullyVerified="true">lost<annotation conceptref="CARD_TYPE">atm card</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="TIMEFRAME">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">may</annotation>
+                </annotation>
+            </annotation>'s<annotation conceptref="ACCOUNT_NAME">visa silver card</annotation>transactions</sample>
+        <sample intentref="I_INQUIRE_MORTGAGE" count="1" excluded="false" fullyVerified="true">What's the lowest mortgate rate you can give me ?</sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">I would like to request transactions for<annotation conceptref="BUSINESS_NAME">Chipotle</annotation>in<annotation conceptref="TIMEFRAME">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">September</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">I would like to request transaction information for my<annotation conceptref="ACCOUNT_NAME">joint</annotation>account</sample>
+        <sample intentref="I_INQUIRE_MORTGAGE" count="1" excluded="false" fullyVerified="true">What is your current refinancing rate ?</sample>
+        <sample intentref="I_INQUIRE_MORTGAGE" count="1" excluded="false" fullyVerified="true">What Is the lowest mortgate rate you can give me ?</sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="ACCOUNT_NAME">jbc card</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">expenses</annotation>in<annotation conceptref="TIMEFRAME">november</annotation>
+        </sample>
+        <sample intentref="I_INQUIRE_BRANCH_LOCATION" count="1" excluded="false" fullyVerified="true">i'll go to an actual branch</sample>
+        <sample intentref="I_INQUIRE_BRANCH_LOCATION" count="1" excluded="false" fullyVerified="true">i'll go to a branch</sample>
+        <sample intentref="NO_INTENT" count="1" excluded="false" fullyVerified="true">My<annotation conceptref="CARD_TYPE">silver card</annotation>
+        </sample>
+        <sample intentref="I_REPORT_FRAUD" count="1" excluded="false" fullyVerified="true">wait i didn't make that charge</sample>
+        <sample intentref="I_REPORT_FRAUD" count="1" excluded="false" fullyVerified="true">i didn't make all of these charges</sample>
+        <sample intentref="I_REPORT_FRAUD" count="1" excluded="false" fullyVerified="true">i didn't go here</sample>
+        <sample intentref="I_REPORT_FRAUD" count="1" excluded="false" fullyVerified="true">i didn't make all of those charges</sample>
+        <sample intentref="I_REPORT_FRAUD" count="1" excluded="false" fullyVerified="true">i didn't buy these things</sample>
+        <sample intentref="I_REPORT_FRAUD" count="1" excluded="false" fullyVerified="true">wait i didn't make these charges</sample>
+        <sample intentref="I_REPORT_FRAUD" count="1" excluded="false" fullyVerified="true">i didn't buy those things</sample>
+        <sample intentref="I_INQUIRE_MORTGAGE" count="1" excluded="false" fullyVerified="true">I couldn't find any information on the difference between rates and apr</sample>
+        <sample intentref="I_REQUEST_TRANSACTION_INFO" count="1" excluded="false" fullyVerified="true">look for<annotation conceptref="CATEGORY">video</annotation>
+            <annotation conceptref="TRANSACTION_TYPE">charges</annotation>in my<annotation conceptref="ACCOUNT_NAME">saving</annotation>
+        </sample>
+        <sample intentref="NO_INTENT" count="1" excluded="false" fullyVerified="true">use my<annotation conceptref="ACCOUNT_NAME">savings</annotation>account</sample>
+        <sample intentref="NO_INTENT" count="1" excluded="false" fullyVerified="true">selecting<annotation conceptref="ACCOUNT_NAME">savings</annotation>please</sample>
+        <sample intentref="NO_INTENT" count="1" excluded="false" fullyVerified="true">with<annotation conceptref="ACCOUNT_NAME">checking</annotation>
+        </sample>
+        <sample intentref="NO_INTENT" count="1" excluded="false" fullyVerified="true">using my<annotation conceptref="ACCOUNT_NAME">main savings</annotation>
+        </sample>
+        <sample intentref="I_REQUEST_ACCOUNT_BALANCE" count="1" excluded="false" fullyVerified="true">what's the balance of my<annotation conceptref="ACCOUNT_NAME">main savings</annotation>account</sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay off all of my<annotation conceptref="PAYEE">credit card</annotation>
+        </sample>
+        <sample intentref="I_PAY_BILL" count="1" excluded="false" fullyVerified="true">pay off all of my<annotation conceptref="PAYEE">master card bill</annotation>
+        </sample>
+    </samples>
+</project>
