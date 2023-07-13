@@ -1,0 +1,58 @@
+{
+    "channels": [
+        {
+            "color": "#871699",
+            "isEnabled": true,
+            "modes": [
+                "Audio Script",
+                "DTMF",
+                "TTS",
+                "Voice"
+            ],
+            "name": "IVR channel"
+        },
+        {
+            "color": "#F59E47",
+            "isEnabled": true,
+            "modes": [
+                "Interactivity",
+                "Rich Text",
+                "Text"
+            ],
+            "name": "Digital VA text"
+        },
+        {
+            "color": "#31B96E",
+            "isEnabled": true,
+            "modes": [
+                "Interactivity",
+                "Rich Text",
+                "TTS",
+                "Voice"
+            ],
+            "name": "Digital VA voice"
+        }
+    ],
+    "collaborators": [
+        "stefanie.fail@nuance.com",
+        "gabriel.webster@nuance.com",
+        "ktajdin@nuance.com",
+        "andreas.volmer@nuance.com",
+        "nirvana.tikku@nuance.com"
+    ],
+    "createdTime": "2023-06-12T17:27:01.397334Z",
+    "id": {
+        "ontology": "ec62114d-b93a-4d36-81ce-e71e7774e44c",
+        "project": 57512
+    },
+    "lastModified": "2023-06-21T23:54:40.392153Z",
+    "name": "Banking prebuilt app v3",
+    "stats": {
+        "entities": 38,
+        "intents": 19
+    },
+    "versions": {
+        "baseDatapack": "10.2.14",
+        "qnlp": "QNLP_2_22"
+    }
+}
